@@ -1,0 +1,47 @@
+\begin{thebibliography}{9}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[Ackerberg et~al.(2015)Ackerberg, Caves, and
+  Frazer]{ackerberg2015identification}
+Ackerberg, Daniel~A, Kevin Caves, and Garth Frazer, 2015, Identification
+  properties of recent production function estimators, {\em Econometrica\/} 83,
+  2411--2451.
+
+\bibitem[Blundell and Bond(2000)]{blundell2000gmm}
+Blundell, Richard, and Stephen Bond, 2000, Gmm estimation with persistent panel
+  data: an application to production functions, {\em Econometric reviews\/} 19,
+  321--340.
+
+\bibitem[Davis et~al.(2014)Davis, Fisher, and Whited]{davis2014macroeconomic}
+Davis, Morris~A, Jonas~DM Fisher, and Toni~M Whited, 2014, Macroeconomic
+  implications of agglomeration, {\em Econometrica\/} 82, 731--764.
+
+\bibitem[Hsieh and Klenow(2009)]{hsieh2009misallocation}
+Hsieh, Chang-Tai, and Peter~J Klenow, 2009, Misallocation and manufacturing tfp
+  in china and india, {\em The Quarterly journal of economics\/} 124,
+  1403--1448.
+
+\bibitem[Kmenta(1967)]{kmenta1967estimation}
+Kmenta, Jan, 1967, On estimation of the ces production function, {\em
+  International Economic Review\/} 8, 180--189.
+
+\bibitem[Levinsohn and Petrin(2003)]{levinsohn2003estimating}
+Levinsohn, James, and Amil Petrin, 2003, Estimating production functions using
+  inputs to control for unobservables, {\em The review of economic studies\/}
+  70, 317--341.
+
+\bibitem[Martinsson et~al.(2024)Martinsson, Sajtos, Str{\"o}mberg, and
+  Thomann]{martinsson2024effect}
+Martinsson, Gustav, L{\'a}szl{\'o} Sajtos, Per Str{\"o}mberg, and Christian
+  Thomann, 2024, The effect of carbon pricing on firm emissions: Evidence from
+  the swedish co2 tax, {\em The Review of Financial Studies\/}  hhad097.
+
+\bibitem[Olley and Pakes(1992)]{olley1992dynamics}
+Olley, Steven, and Ariel Pakes, 1992, The dynamics of productivity in the
+  telecommunications equipment industry.
+
+\bibitem[Whited and Zhao(2021)]{whited2021misallocation}
+Whited, Toni~M, and Jake Zhao, 2021, The misallocation of finance, {\em The
+  Journal of Finance\/} 76, 2359--2407.
+
+\end{thebibliography}

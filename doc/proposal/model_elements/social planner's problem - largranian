@@ -1,0 +1,7 @@
+\begin{equation*}
+    \begin{split}
+        \mathcal{L}_s = &\left(
+            \sum_i \hat{Y}_{si}^{\frac{\sigma-1}{\sigma}}
+        \right)^{\frac{\sigma}{\sigma-1}} + \lambda_L(L_s - \sum_i \hat{L}_{si}) + \lambda_E(E_s - \sum_i \hat{E}_{si}) + (K_s - \sum_i \hat{G}_{si}+ \hat{B}_{si})
+    \end{split}
+\end{equation*}

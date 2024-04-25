@@ -1,0 +1,331 @@
+
+\documentclass[11pt]{article}
+
+% DEFAULT PACKAGE SETUP
+
+\usepackage{setspace,graphicx,epstopdf,amsmath,amsfonts,amssymb,amsthm,versionPO}
+\usepackage{marginnote,datetime,enumitem,subfigure,rotating,fancyvrb}
+\usepackage{hyperref,float}
+\usepackage[longnamesfirst]{natbib}
+\usdate
+
+% These next lines allow including or excluding different versions of text
+% using versionPO.sty
+
+\excludeversion{notes}		% Include notes?
+\includeversion{links}          % Turn hyperlinks on?
+
+% Turn off hyperlinking if links is excluded
+\iflinks{}{\hypersetup{draft=true}}
+
+% Notes options
+\ifnotes{%
+\usepackage[margin=1in,paperwidth=10in,right=2.5in]{geometry}%
+\usepackage[textwidth=1.4in,shadow,colorinlistoftodos]{todonotes}%
+}{%
+\usepackage[margin=1in]{geometry}%
+\usepackage[disable]{todonotes}%
+}
+
+% Allow todonotes inside footnotes without blowing up LaTeX
+% Next command works but now notes can overlap. Instead, we'll define 
+% a special footnote note command that performs this redefinition.
+%\renewcommand{\marginpar}{\marginnote}%
+
+% Save original definition of \marginpar
+\let\oldmarginpar\marginpar
+
+% Workaround for todonotes problem with natbib (To Do list title comes out wrong)
+\makeatletter\let\chapter\@undefined\makeatother % Undefine \chapter for todonotes
+
+% Define note commands
+\newcommand{\smalltodo}[2][] {\todo[caption={#2}, size=\scriptsize, fancyline, #1] {\begin{spacing}{.5}#2\end{spacing}}}
+\newcommand{\rhs}[2][]{\smalltodo[color=green!30,#1]{{\bf RS:} #2}}
+\newcommand{\rhsnolist}[2][]{\smalltodo[nolist,color=green!30,#1]{{\bf RS:} #2}}
+\newcommand{\rhsfn}[2][]{%  To be used in footnotes (and in floats)
+\renewcommand{\marginpar}{\marginnote}%
+\smalltodo[color=green!30,#1]{{\bf RS:} #2}%
+\renewcommand{\marginpar}{\oldmarginpar}}
+%\newcommand{\textnote}[1]{\ifnotes{{\noindent\color{red}#1}}{}}
+\newcommand{\textnote}[1]{\ifnotes{{\colorbox{yellow}{{\color{red}#1}}}}{}}
+
+% Command to start a new page, starting on odd-numbered page if twoside option 
+% is selected above
+\newcommand{\clearRHS}{\clearpage\thispagestyle{empty}\cleardoublepage\thispagestyle{plain}}
+
+% Number paragraphs and subparagraphs and include them in TOC
+\setcounter{tocdepth}{2}
+
+% JF-specific includes:
+
+\usepackage{indentfirst} % Indent first sentence of a new section.
+\usepackage{endnotes}    % Use endnotes instead of footnotes
+\usepackage{jf}          % JF-specific formatting of sections, etc.
+\usepackage[labelfont=bf,labelsep=period]{caption}   % Format figure captions
+\captionsetup[table]{labelsep=none}
+
+% Define theorem-like commands and a few random function names.
+\newtheorem{condition}{CONDITION}
+\newtheorem{corollary}{COROLLARY}
+\newtheorem{proposition}{PROPOSITION}
+\newtheorem{obs}{OBSERVATION}
+\newcommand{\argmax}{\mathop{\rm arg\,max}}
+\newcommand{\sign}{\mathop{\rm sign}}
+\newcommand{\defeq}{\stackrel{\rm def}{=}}
+
+\begin{document}
+
+\setlist{noitemsep}  % Reduce space between list items (itemize, enumerate, etc.)
+\onehalfspacing      % Use 1.5 spacing
+% Use endnotes instead of footnotes - redefine \footnote command
+\renewcommand{\footnote}{\endnote}  % Endnotes instead of footnotes
+
+\input{section/info.tex}
+
+% Create title page with no page number
+
+\maketitle
+\thispagestyle{empty}
+
+\bigskip
+
+\centerline{\bf ABSTRACT}
+
+\begin{doublespace}  % Double-space the abstract and don't indent it
+  \noindent 
+  \input{section/abstract.tex}
+\end{doublespace}
+
+\medskip
+
+\noindent JEL classification: XXX, YYY.
+
+\clearpage
+
+
+
+\noindent \input{section/intro.tex}
+\input{section/model.tex}
+
+\section{Data} \label{sec:Data}
+\input{section/data.tex}
+
+\section{Estimation} \label{sec:Estimation}
+\input{section/estimation.tex}
+
+
+
+
+
+% To justify adding a subsection here, from now on, we'll assume
+% \begin{condition}\label{cond:rates}
+% $0 <  \hat{\mu} < \gamma\sigma^2$.
+% \vspace{3mm}
+% \end{condition}
+% This condition might be useful if there was a model. 
+
+% \subsection{Another Subsection, With a Figure}
+% \label{sec:subsec}
+
+% Figures get put at the end, with a note marking where they should go in the text, like this:
+
+% \bigskip
+% \centerline{\bf [Place Figure~\ref{fig:0} about here]}
+% \bigskip
+
+% \subsubsection{A Subsubsection with a Proposition}
+% \label{sec:subsub}
+
+% Let's put a proposition here.
+% \begin{proposition} \label{prop:3}
+% If Condition~\ref{cond:rates} is satisfied,  a solution to the central
+% planner's problem, $V(B,D,t) \in C^2\left( {\mathbb R}_{+}^2 \times
+%   [0,T] \right)$, with control $a:[0,1]\times[0,T]\rightarrow [-\lambda,\lambda]$
+%  if  $\gamma>1$ is
+% \begin{equation} \label{eq:valuea}
+% V(B,D,t) =  - \frac{(B+D)^{1-\gamma}}{1-\gamma}   w\left(\frac{B}{B+D},t\right).
+% \end{equation}
+% \end{proposition}
+
+%\clearpage
+
+\appendix
+
+\section{Definitions and Proofs} \label{Ap:defProof}
+\subsection{Optimal input level for given output} \label{Ap:optimal level for given output}
+\input{model_elements/capital allocation problem.tex}
+\input{model_elements/capital allocation solution.tex}
+Let's define the use the optimal ratios (\input{model_elements/optimal ratio.tex})
+Optimal capital level for given output is 
+
+\begin{equation*}
+  \bar{Y}_{si} = \hat{A}_{si} \hat{K^*}_{si}^{\beta_s} {L^*}_{si}^{1-\beta_s} = \hat{A}_{si} \hat{K^*}_{si} ({\frac{L^*}{\hat{K^*}}})_{si}^{(1-\beta_s)}= \hat{A}_{si} \hat{K^*}_{si} {z_{si}^l}^{(1-\beta_s)}
+\end{equation*}
+we can rewrite the optimal capital level as:
+\begin{equation*}
+  \begin{split}
+      \hat{K}_{si} &= \input{model_elements/optimal level of K based on B.tex}\\
+      & = \input{model_elements/optimal level of K based on G.tex}
+  \end{split}
+\end{equation*}
+and then drive the optimal level of each type of capital:
+\begin{equation*}
+  G_{si}^* = \input{model_elements/optimal G.tex}
+\end{equation*}
+\begin{equation*}
+  B_{si}^* = \input{model_elements/optimal B.tex}
+\end{equation*}
+\begin{equation*}
+  L_{si}^* = \input{model_elements/optimal L.tex}
+\end{equation*}
+\subsection{Optimal Emission level for given output}\label{Ap:optimal emission level}
+\input{model_elements/emission optimal level proof.tex}
+\subsection{Optimal price}\label{Ap:optimal price}
+We need to solve the firm price $P_{si}$ as function of sector price $P_s$, where $P_{si}$ is defined as the price of acquiring a unit of the firm benefit:
+    \input{model_elements/optimal price level proof.tex}
+\subsection{Productivity of the firm}\label{Ap:productivity}
+
+\input{model_elements/production technology proof.tex}
+
+\input{model_elements/pollution technology proof.tex}
+\subsection{Reallocation} \label{Ap:reallocation}
+
+
+\input{model_elements/allocation social planner proof.tex}
+
+\section{Estimation of the model}
+\label{Ap:estimation}
+I will follow the \cite{kmenta1967estimation} to estimate the parameters of the model. The production function is:
+\begin{gather*}
+    Y_{it} = \hat{A}_{it}(
+        \alpha G_{it}^{\frac{\gamma-1}{\gamma}} + (1-\alpha) B_{it}^{\frac{\gamma-1}{\gamma}}
+    ) ^ {\frac{\beta\gamma}{\gamma-1}} L_{it}^{1-\beta}\\
+    \ln Y_{it} = \ln \hat{A}_{it} + \frac{\beta\gamma}{\gamma-1} \ln(
+        \alpha G_{it}^{\frac{\gamma-1}{\gamma}} + (1-\alpha) B_{it}^{\frac{\gamma-1}{\gamma}}
+    ) + (1-\beta) \ln L_{it}
+\end{gather*}
+I assume that the $\hat{A}_{it} \equiv e^a e^{u_{it}}$, where $a$ is the common component of productivity and $u_{it}$ is the unpredictable component. We can rewrite the production function as:
+\begin{gather*}
+    \ln Y_{it} = a + u_{it} + \frac{\beta\gamma}{\gamma-1} \ln(
+        \alpha G_{it}^{\frac{\gamma-1}{\gamma}} + (1-\alpha) B_{it}^{\frac{\gamma-1}{\gamma}}
+    ) + (1-\beta) \ln L_{it}
+\end{gather*}
+Following the \cite{kmenta1967estimation}, I take the first-order approximation of the production function around the $\gamma_s = 1$. This requires to take the limit of the third term in the production function as $\gamma_s$ approaches 1. The limit is:
+\begin{gather*}
+    \lim_{\gamma_s \to 1} \frac{\beta\gamma}{\gamma-1} \ln(
+        \alpha G_{it}^{\frac{\gamma-1}{\gamma}} + (1-\alpha) B_{it}^{\frac{\gamma-1}{\gamma}}
+    ) = \beta (\alpha \ln G_{it}   + (1-\alpha)\ln B_{it} )
+\end{gather*}
+and the limit of the derivative of this same term
+\begin{gather*}
+    \lim_{\gamma_s \to 1} \frac{\partial}{\partial \gamma_s} \left( \frac{\beta\gamma}{\gamma-1} \ln(
+        \alpha G_{it}^{\frac{\gamma-1}{\gamma}} + (1-\alpha) B_{it}^{\frac{\gamma-1}{\gamma}}
+    ) \right) = \beta \frac{\alpha (1-\alpha)}{2}(\ln G_{it} - \ln B_{it})^2
+\end{gather*}
+The first-order approximation of the production function is:
+\begin{gather*}
+    \ln Y_{it} = a + u_{it} +  \beta\alpha \ln G_{it}   + \beta(1-\alpha)\ln B_{it} + (1-\beta) \ln L_{it} + \beta \frac{\alpha (1-\alpha)(\gamma_s - 1)}{2}(\ln G_{it} - \ln B_{it})^2
+\end{gather*}
+
+To estimate this approximation, I assume that the error term can be decomposed as $u_{it} = f_i + \epsilon_{it}$ where $f_i$ varies across firm. Then I can use OLS with firm fixed effects and appropriately defined coefficients:
+\begin{gather*}
+    \ln Y_{it} = \beta_0^Y + \beta_G^Y \ln G_{it} + \beta_B^Y \ln B_{it} + \beta_L^Y \ln L_{it} + \beta_{GB}^Y (\ln G_{it} - \ln B_{it})^2 + \epsilon_{it}
+\end{gather*}
+
+
+Alternatively, I can assume that the error term is $u_{it} = z_{it} + \epsilon_{it}$ where $z_{it}$ is a predictable component that follows the AR(1) process $z_{it} = \rho z_{it-1} + \nu_{it}$. Then I follow the \cite{blundell2000gmm} or \cite{davis2014macroeconomic} to obtain
+\begin{equation*}
+  \begin{split}
+    \ln Y_{it} - \rho \ln Y_{it-1} & = \beta_0^Y(1-\rho) + \beta_G^Y (\ln G_{it} - \rho \ln G_{it-1}) \\
+    &  + \beta_B^Y (\ln B_{it} - \rho \ln B_{it-1}) + \beta_L^Y (\ln L_{it} - \rho \ln L_{it-1}) \\
+    & + \beta_{GB}^Y [(\ln G_{it} -  \ln B_{it} )^2 - \rho(\ln G_{it-1} - \ln B_{it-1})^2]\\
+    & + (z_{it} - \rho z_{it-1}) + (\epsilon_{it} - \rho \epsilon_{it-1})
+  \end{split}
+\end{equation*}
+where $(z_{it} - \rho z_{it-1}) + (\epsilon_{it} - \rho \epsilon_{it-1}) = \nu_{it} + (\epsilon_{it} - \rho \epsilon_{it-1})$ is the zero mean error term. Then I can use GMM to estimate the four coefficients with five instruments, namely, $\ln G_{it-1}$, $\ln B_{it-1}$, $\ln L_{it-1}$, $(\ln G_{it-1} - \ln B_{it-1})^2$, and $\ln Y_{it-1}$.
+
+Under either of these assumptions, I can estimate the parameters of the production function and then use the same approach to estimate the emission function\footnote{ The estimation model is:
+\begin{gather*}
+    \ln E_{it} = \beta_0^E + \beta_G^E \ln G_{it} + \beta_B^E \ln B_{it} + \beta_L^E \ln L_{it} + \beta_{GB}^E (\ln G_{it} - \ln B_{it})^2 + \epsilon_{it}
+\end{gather*}}. The estimates of the parameters are given in the Table~\ref{tab:estimate_parameters}.
+
+\begin{table}[http]
+    \centering
+    \caption{\quad Parameters estimates of production and emission functions} \label{tab:estimate_parameters}
+    \begin{tabular}{cc}
+        \hline
+        \textbf{Parameter} & \textbf{Value} \\
+        \hline
+        $\beta_{s}$ & $1-\beta_L^Y$ \vspace{5pt}
+        \\
+        $\alpha_{s}$ & $1-\dfrac{\beta_B^Y}{1-\beta_L^Y}$ \vspace{5pt}
+        \\
+        $\gamma_{s}$ & $1+\dfrac{2\beta_{GB}^Y(1-\beta_L^Y)}{\beta_G^Y\beta_B^Y}$ \vspace{5pt}
+        \\
+        \hline
+    \end{tabular}
+    \hspace{1cm}
+    \begin{tabular}{cc}
+      \hline
+      \textbf{Parameter} & \textbf{Value} \\
+      \hline
+      $\theta_{s}$ & $1-\beta_L^E$ \vspace{5pt}
+      \\
+      $\mu_{s}$ & $1-\dfrac{\beta_B^E}{1-\beta_L^E}$ \vspace{5pt}
+      \\
+      $\eta_{s}$ & $1+\dfrac{2\beta_{GB}^E(1-\beta_L^E)}{\beta_G^E\beta_B^E}$ \vspace{5pt}
+      \\
+      \hline
+  \end{tabular}
+\end{table}
+
+
+
+
+\clearpage
+
+% Bibliography.
+
+\begin{doublespacing}   % Double-space the bibliography
+\bibliographystyle{jf}
+\bibliography{literature}
+\end{doublespacing}
+
+\clearpage
+
+% Print end notes
+\renewcommand{\enotesize}{\normalsize}
+\begin{doublespacing}
+  \theendnotes
+\end{doublespacing}
+
+% % Figures and tables, showing how to structure captions
+\clearpage
+
+
+\vfill
+\begin{figure}[!htb]
+\centerline{\includegraphics[width=7in]{Figures/production_emission.pdf}}
+\caption{{\bf Relationship Between Production and Emissions: Impact of $\alpha$ and $\gamma$ on model's results.} This figure shows the impact of the $\alpha$ and $\gamma$ parameters on the relationship between production and emissions.}
+\label{fig:production_emission}
+\end{figure}
+\vfill
+
+
+
+\vfill
+\begin{figure}[!htb]
+\centerline{\includegraphics[width=7in]{Figures/intensity_tax_premium.pdf}}
+\caption{{\bf Comparative Effectiveness of Carbon Tax, Green Subsidy, and Brown Tax on Carbon Intensity.} This figure quantifies the impact of different environmental policies on the carbon intensity of the economy.} \label{fig:intensity_tax_premium}
+\end{figure}
+\vfill
+
+\vfill
+\begin{figure}[!htb]
+\centerline{\includegraphics[width=7in]{Figures/emission_production.pdf}}
+\caption{{\bf Comparative Effectiveness of Carbon Tax, Green Subsidy, and Brown Tax on Carbon Intensity.} This figure quantifies the impact of different environmental policies on the total emission and total production in the economy.} \label{fig:emission_production}
+\end{figure}
+\vfill
+
+
+\end{document}

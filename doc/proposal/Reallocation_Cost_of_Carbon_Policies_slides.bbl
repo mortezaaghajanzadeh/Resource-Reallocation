@@ -1,0 +1,79 @@
+
+
+% Bibstyle aea.bst version 2009.05.20
+
+\begin{thebibliography}{xx}
+
+\harvarditem[Acemoglu, Gancia, \harvardand\ Zilibotti]{Acemoglu, Gancia,
+  \harvardand\ Zilibotti}{2012}{acemoglu2012competing}
+{\bf Acemoglu, Daron, Gino Gancia, and Fabrizio Zilibotti.} 2012. ``Competing
+  engines of growth: Innovation and standardization.'' {\em Journal of Economic
+  Theory}, 147(2):~570--601.
+
+\harvarditem[Acemoglu et~al.]{Acemoglu et~al.}{2016}{acemoglu2016transition}
+{\bf Acemoglu, Daron, Ufuk Akcigit, Douglas Hanley, and William Kerr.} 2016.
+  ``Transition to clean technology.'' {\em Journal of political economy},
+  124(1):~52--104.
+
+\harvarditem[Ahmadi, Yamazaki, \harvardand\ Kabore]{Ahmadi, Yamazaki,
+  \harvardand\ Kabore}{2022}{ahmadi2022carbon}
+{\bf Ahmadi, Younes, Akio Yamazaki, and Philippe Kabore.} 2022. ``How do carbon
+  taxes affect emissions? Plant-level evidence from manufacturing.'' {\em
+  Environmental and Resource Economics}, 82(2):~285--325.
+
+\harvarditem[Ai, Li, \harvardand\ Yang]{Ai, Li, \harvardand\
+  Yang}{2020}{ai2020financial}
+{\bf Ai, Hengjie, Kai Li, and Fang Yang.} 2020. ``Financial intermediation and
+  capital reallocation.'' {\em Journal of Financial Economics},
+  138(3):~663--686.
+
+\harvarditem[Andersson]{Andersson}{2019}{andersson2019carbon}
+{\bf Andersson, Julius~J.} 2019. ``Carbon taxes and CO2 emissions: Sweden as a
+  case study.'' {\em American Economic Journal: Economic Policy}, 11(4):~1--30.
+
+\harvarditem[Asker, Collard-Wexler, \harvardand\ De~Loecker]{Asker,
+  Collard-Wexler, \harvardand\ De~Loecker}{2014}{asker2014dynamic}
+{\bf Asker, John, Allan Collard-Wexler, and Jan De~Loecker.} 2014. ``Dynamic
+  inputs and resource (mis) allocation.'' {\em Journal of Political Economy},
+  122(5):~1013--1063.
+
+\harvarditem[Hsieh \harvardand\ Klenow]{Hsieh \harvardand\
+  Klenow}{2009}{hsieh2009misallocation}
+{\bf Hsieh, Chang-Tai, and Peter~J Klenow.} 2009. ``Misallocation and
+  manufacturing TFP in China and India.'' {\em The Quarterly journal of
+  economics}, 124(4):~1403--1448.
+
+\harvarditem[Krueger, Metzger, \harvardand\ Wu]{Krueger, Metzger, \harvardand\
+  Wu}{2023}{krueger2023sustainability}
+{\bf Krueger, Philipp, Daniel Metzger, and Jiaxin Wu.} 2023. ``The
+  sustainability wage gap.'' {\em Swedish House of Finance Research Paper}, ,
+  (20-14):~21--17.
+
+\harvarditem[Martinsson et~al.]{Martinsson et~al.}{2024}{martinsson2024effect}
+{\bf Martinsson, Gustav, L{\'a}szl{\'o} Sajtos, Per Str{\"o}mberg, and
+  Christian Thomann.} 2024. ``The Effect of Carbon Pricing on Firm Emissions:
+  Evidence from the Swedish CO2 Tax.'' {\em The Review of Financial Studies},
+  hhad097.
+
+\harvarditem[Oehmke \harvardand\ Opp]{Oehmke \harvardand\
+  Opp}{2023}{oehmke2023theory}
+{\bf Oehmke, Martin, and Marcus~M Opp.} 2023. ``A theory of socially
+  responsible investment.'' {\em Swedish House of Finance Research Paper}, ,
+  (20-2).
+
+\harvarditem[Shapiro \harvardand\ Walker]{Shapiro \harvardand\
+  Walker}{2018}{shapiro2018pollution}
+{\bf Shapiro, Joseph~S, and Reed Walker.} 2018. ``Why is pollution from US
+  manufacturing declining? The roles of environmental regulation, productivity,
+  and trade.'' {\em American Economic Review}, 108(12):~3814--3854.
+
+\harvarditem[Whited \harvardand\ Zhao]{Whited \harvardand\
+  Zhao}{2021}{whited2021misallocation}
+{\bf Whited, Toni~M, and Jake Zhao.} 2021. ``The misallocation of finance.''
+  {\em The Journal of Finance}, 76(5):~2359--2407.
+
+\harvarditem[Wiedemann]{Wiedemann}{2023}{wiedemann2023green}
+{\bf Wiedemann, Moritz.} 2023. ``Green stewards: Responsible institutional
+  investors foster green capex.'' {\em Available at SSRN 4618793}.
+
+\end{thebibliography}
