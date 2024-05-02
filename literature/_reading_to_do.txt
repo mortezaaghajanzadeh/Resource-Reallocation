@@ -3,3 +3,5 @@
 * 202304_Kanzig: The Unequal Economic Consequences of Carbon Pricing
 
 * Econometrica_GolosovHasslerKrusellTsyvunski: OPTIMALTAXESONFOSSILFUELINGENERALEQUILIBRIUM
+
+* AER_2012The Environment and Directed Technical Change 
