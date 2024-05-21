@@ -1,4 +1,4 @@
-\begin{thebibliography}{9}
+\begin{thebibliography}{10}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[Ackerberg et~al.(2015)Ackerberg, Caves, and
@@ -43,5 +43,9 @@ Olley, Steven, and Ariel Pakes, 1992, The dynamics of productivity in the
 \bibitem[Whited and Zhao(2021)]{whited2021misallocation}
 Whited, Toni~M, and Jake Zhao, 2021, The misallocation of finance, {\em The
   Journal of Finance\/} 76, 2359--2407.
+
+\bibitem[Wiedemann(2023)]{wiedemann2023green}
+Wiedemann, Moritz, 2023, Green stewards: Responsible institutional investors
+  foster green capex, {\em Available at SSRN 4618793\/} .
 
 \end{thebibliography}
