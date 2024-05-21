@@ -1,0 +1,85 @@
+I will follow the \cite{kmenta1967estimation} to estimate the parameters of the model. The production function is:
+\begin{gather*}
+    Y_{it} = \hat{A}_{it}(
+        \alpha G_{it}^{\frac{\gamma-1}{\gamma}} + (1-\alpha) B_{it}^{\frac{\gamma-1}{\gamma}}
+    ) ^ {\frac{\beta\gamma}{\gamma-1}} L_{it}^{1-\beta}\\
+    \ln Y_{it} = \ln \hat{A}_{it} + \frac{\beta\gamma}{\gamma-1} \ln(
+        \alpha G_{it}^{\frac{\gamma-1}{\gamma}} + (1-\alpha) B_{it}^{\frac{\gamma-1}{\gamma}}
+    ) + (1-\beta) \ln L_{it}
+\end{gather*}
+I assume that the $\hat{A}_{it} \equiv e^a e^{u_{it}}$, where $a$ is the common component of productivity and $u_{it}$ is the unpredictable component. We can rewrite the production function as:
+\begin{gather*}
+    \ln Y_{it} = a + u_{it} + \frac{\beta\gamma}{\gamma-1} \ln(
+        \alpha G_{it}^{\frac{\gamma-1}{\gamma}} + (1-\alpha) B_{it}^{\frac{\gamma-1}{\gamma}}
+    ) + (1-\beta) \ln L_{it}
+\end{gather*}
+Following the \cite{kmenta1967estimation}, I take the first-order approximation of the production function around the $\gamma_s = 1$. This requires to take the limit of the third term in the production function as $\gamma_s$ approaches 1. The limit is:
+\begin{gather*}
+    \lim_{\gamma_s \to 1} \frac{\beta\gamma}{\gamma-1} \ln(
+        \alpha G_{it}^{\frac{\gamma-1}{\gamma}} + (1-\alpha) B_{it}^{\frac{\gamma-1}{\gamma}}
+    ) = \beta (\alpha \ln G_{it}   + (1-\alpha)\ln B_{it} )
+\end{gather*}
+and the limit of the derivative of this same term
+\begin{gather*}
+    \lim_{\gamma_s \to 1} \frac{\partial}{\partial \gamma_s} \left( \frac{\beta\gamma}{\gamma-1} \ln(
+        \alpha G_{it}^{\frac{\gamma-1}{\gamma}} + (1-\alpha) B_{it}^{\frac{\gamma-1}{\gamma}}
+    ) \right) = \beta \frac{\alpha (1-\alpha)}{2}(\ln G_{it} - \ln B_{it})^2
+\end{gather*}
+The first-order approximation of the production function is:
+\begin{gather*}
+    \ln Y_{it} = a + u_{it} +  \beta\alpha \ln G_{it}   + \beta(1-\alpha)\ln B_{it} + (1-\beta) \ln L_{it} + \beta \frac{\alpha (1-\alpha)(\gamma_s - 1)}{2}(\ln G_{it} - \ln B_{it})^2
+\end{gather*}
+
+To estimate this approximation, I assume that the error term can be decomposed as $u_{it} = f_i + \epsilon_{it}$ where $f_i$ varies across firm. Then I can use OLS with firm fixed effects and appropriately defined coefficients:
+\begin{gather*}
+    \ln Y_{it} = \beta_0^Y + \beta_G^Y \ln G_{it} + \beta_B^Y \ln B_{it} + \beta_L^Y \ln L_{it} + \beta_{GB}^Y (\ln G_{it} - \ln B_{it})^2 + \epsilon_{it}
+\end{gather*}
+
+
+Alternatively, I can assume that the error term is $u_{it} = z_{it} + \epsilon_{it}$ where $z_{it}$ is a predictable component that follows the AR(1) process $z_{it} = \rho z_{it-1} + \nu_{it}$. Then I follow the \cite{blundell2000gmm} or \cite{davis2014macroeconomic} to obtain
+\begin{equation*}
+  \begin{split}
+    \ln Y_{it} - \rho \ln Y_{it-1} & = \beta_0^Y(1-\rho) + \beta_G^Y (\ln G_{it} - \rho \ln G_{it-1}) \\
+    &  + \beta_B^Y (\ln B_{it} - \rho \ln B_{it-1}) + \beta_L^Y (\ln L_{it} - \rho \ln L_{it-1}) \\
+    & + \beta_{GB}^Y [(\ln G_{it} -  \ln B_{it} )^2 - \rho(\ln G_{it-1} - \ln B_{it-1})^2]\\
+    & + (z_{it} - \rho z_{it-1}) + (\epsilon_{it} - \rho \epsilon_{it-1})
+  \end{split}
+\end{equation*}
+where $(z_{it} - \rho z_{it-1}) + (\epsilon_{it} - \rho \epsilon_{it-1}) = \nu_{it} + (\epsilon_{it} - \rho \epsilon_{it-1})$ is the zero mean error term. Then I can use GMM to estimate the four coefficients with five instruments, namely, $\ln G_{it-1}$, $\ln B_{it-1}$, $\ln L_{it-1}$, $(\ln G_{it-1} - \ln B_{it-1})^2$, and $\ln Y_{it-1}$.
+
+Under either of these assumptions, I can estimate the parameters of the production function and then use the same approach to estimate the emission function\footnote{ The estimation model is:
+\begin{gather*}
+    \ln E_{it} = \beta_0^E + \beta_G^E \ln G_{it} + \beta_B^E \ln B_{it} + \beta_L^E \ln L_{it} + \beta_{GB}^E (\ln G_{it} - \ln B_{it})^2 + \epsilon_{it}
+\end{gather*}}. The estimates of the parameters are given in the Table~\ref{tab:estimate_parameters}.
+
+\begin{table}[http]
+    \centering
+    \caption{\quad Parameters estimates of production and emission functions} \label{tab:estimate_parameters}
+    \begin{tabular}{cc}
+        \hline
+        \textbf{Parameter} & \textbf{Value} \\
+        \hline
+        $\beta_{s}$ & $1-\beta_L^Y$ \vspace{5pt}
+        \\
+        $\alpha_{s}$ & $1-\dfrac{\beta_B^Y}{1-\beta_L^Y}$ \vspace{5pt}
+        \\
+        $\gamma_{s}$ & $1+\dfrac{2\beta_{GB}^Y(1-\beta_L^Y)}{\beta_G^Y\beta_B^Y}$ \vspace{5pt}
+        \\
+        \hline
+    \end{tabular}
+    \hspace{1cm}
+    \begin{tabular}{cc}
+      \hline
+      \textbf{Parameter} & \textbf{Value} \\
+      \hline
+      $\theta_{s}$ & $1-\beta_L^E$ \vspace{5pt}
+      \\
+      $\mu_{s}$ & $1-\dfrac{\beta_B^E}{1-\beta_L^E}$ \vspace{5pt}
+      \\
+      $\eta_{s}$ & $1+\dfrac{2\beta_{GB}^E(1-\beta_L^E)}{\beta_G^E\beta_B^E}$ \vspace{5pt}
+      \\
+      \hline
+  \end{tabular}
+\end{table}
+
+
