@@ -47,7 +47,7 @@ The first-order approximation of the production function is:
 
 To estimate this approximation, I assume that the error term can be decomposed as $u_{it} = f_i + \epsilon_{it}$ where $f_i$ varies across firm. Then I can use OLS with firm fixed effects  within each Industry and appropriately defined coefficients:
 \begin{gather*}
-    \ln Y_{it} = \beta_0^Y + \beta_G^Y \ln G_{it} + \beta_B^Y \ln B_{it} + \beta_L^Y \ln L_{it} + \beta_{GB}^Y (\ln G_{it} - \ln B_{it})^2 + \epsilon_{it}
+    \ln R_{it} = \beta_0^Y + \beta_G^Y \ln G_{it} + \beta_B^Y \ln B_{it} + \beta_L^Y \ln L_{it} + \beta_{GB}^Y (\ln G_{it} - \ln B_{it})^2 + \epsilon_{it}
 \end{gather*}
 
 The industry effects will be absorbed by the constant term as the estimation is done within each industry.  
@@ -78,7 +78,7 @@ Now, I know the the $\alpha$ and $\beta$ parameters. I can use the following rat
 \end{equation*}
 Finally, Given the identified parameters, I can estimate the $\gamma$ using the following ratio:
 \begin{gather*}
-\frac{\beta_{GB}}{\beta_B\beta_G} = \frac{\sigma}{\sigma - 1}\frac{(\gamma-1)}{2\beta} \rightarrow \gamma, \sigma 
+\frac{\beta_{GB}}{\beta_B\beta_G} = \frac{\sigma}{\sigma - 1}\frac{(\gamma-1)}{2\beta} \rightarrow \gamma \checkmark
 \end{gather*}
 
 Given the estimated parameters of the production function, I set the production productivity to match the total revenue in the sector. Then I can estimate the emission inefficiency to match the emission intensity of the sector. The estimated parameters are given in the Table~\ref{tab:estimate_parameters}.
