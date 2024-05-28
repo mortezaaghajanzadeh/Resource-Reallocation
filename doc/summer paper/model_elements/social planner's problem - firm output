@@ -1,0 +1,6 @@
+\begin{equation}
+    \begin{split}
+        \hat{Y}_{si} &= \hat{A}_{si} {z_{s}^l}^{-\beta}\hat{L}_{si}\\
+        \hat{E}_{si} &= \frac{\tilde{A}_{si}}{\hat{A}_{si}}(\frac{\phi_{s}}{z^{l}_{s}})^{\theta_s} {z^{l}_{si}}^{\beta_s} \hat{Y}_{si} = \tilde{A}_{si}(\frac{\phi_{s}}{z^{l}_{s}})^{\theta_s} \hat{L}_{si}
+    \end{split}
+\end{equation}

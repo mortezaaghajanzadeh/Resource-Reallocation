@@ -1,0 +1,136 @@
+
+\section{The Model} \label{sec:Model}
+
+This section outlines my closed-economy model, characterized by heterogeneous firms operating under standard monopolistic competition. Drawing inspiration from \cite{hsieh2009misallocation}, I delve into the environmental and technological underpinnings of production, the intricacies of firm-level decision-making on inputs and pricing, and the broader implications of resource reallocation within the economy.
+
+\subsection{Environment and Technology} \label{sec:env_tech}
+
+Firms in the model produce a single good using labor and capital as inputs where there is two possible type of capital: Green and Brown. The production function of the firm is given by:
+\input{model_elements/firm benefit.tex}
+Here $Y_{si}$ is the output of the firm $i$ in sector $s$ that use  labor ($L_{si}$) and an aggregate capital input ($\hat{K}_{si}$). The aggregate capital input, $\hat{K}_{si}$, is a function of Green capital ($G_{si}$) and Brown capital ($B_{si}$), showcasing the firm's capital composition. Key parameters in this function include $\alpha_s$, which reflects the share of green capital in total capital, indicating its critical role in the production capacity of the firm. The parameter $\beta_s$ represents the capital's contribution to the production process, highlighting the importance of capital input relative to labor. The elasticity of substitution between green and brown capital is denoted by $\gamma_s$, which measures the ease with which firms can switch between these two types of capital. Lastly, $\hat{A}_{si}$ represents the total factor productivity (TFP), indicating the overall efficiency of the firm in converting inputs into output.
+
+Building upon the production framework, the model also accounts for pollution emissions as an inevitable by-product of the manufacturing process. This aspect introduces an environmental dimension, linking the firm's production choices to ecological impacts. The formulation for pollution emissions mirrors the structure of the production function but is specified with distinct parameters:
+\input{model_elements/firm emission.tex}
+Within this framework, $E_{si}$ represents the emissions from firm $i$ in sector $s$, with $\tilde{K}{si}$ adjusting the capital input for emission calculations. The emission equation introduces $\mu_s$ to quantify the relative importance of green capital in mitigating emissions, reflecting a firm's commitment to environmental sustainability. The parameter $\theta_s$ captures the role of capital in emissions, analogous to its influence in the production process but focused on the environmental externality. The elasticity of substitution between green and brown capital, denoted by $\eta_s$, now portrays the firm's flexibility in shifting towards greener production methods to lower emissions. Lastly, $\tilde{A}{si}$, or emission productivity, measures how  a firm generates emissions, indicating variability in pollution levels across firms despite using the same technology within a sector. This dual approach to modeling production and emissions encapsulates the complex interplay between economic productivity and environmental impact, highlighting the heterogeneity in firm-level responses to ecological considerations.
+
+Integrating sector-level production and emissions into the model adds another layer to our understanding of the economy's structure and its environmental impact. At the sector level, the model assumes that the combined output, $Y_s$, is derived from the individual outputs of firms within that sector, using a constant elasticity of substitution (CES) function. This approach is formalized as:
+\input{model_elements/Sector real benefit.tex}
+Here, $\sigma_s$ represents the elasticity of substitution between products from different firms within the sector. A higher $\sigma_s$ implies greater substitutability among firms' outputs, facilitating competition and diversification in the sector.
+
+Transitioning from the sectoral to the economy-wide perspective, the total output, $Y$, aggregates the sector outputs using a Cobb-Douglas function. This is represented as:
+\input{model_elements/Total real benefit of finance}
+In this formula, $\lambda_s$ denotes the weight of each sector's output in the economy, constrained by the condition that all sector weights sum up to one. This constraint ensures a balanced contribution of each sector to the economy, reflecting the diverse composition of economic activities.
+
+However, the aggregation of emissions adopts a straightforward approach, summing up the emissions from all firms within a sector to determine sector emissions, $E_s$, and subsequently summing these across all sectors to calculate the economy's total emissions, $E$. The equations for aggregated emissions are presented as:
+\input{model_elements/Sector emission.tex}
+
+This method highlights the cumulative environmental impact of production, emphasizing the direct link between economic activities and their ecological consequences. By modeling both production and emissions at the firm, sector, and economy levels, the framework provides a comprehensive view of the trade-offs between economic development and environmental sustainability.
+
+
+
+\subsection{Optimal Allocation} \label{sec:optimal_allocation}
+
+When delving into the firm's decision-making process concerning input selection and pricing to optimize profit, it becomes essential to consider the costs associated with labor, green capital, and brown capital. Each of these inputs incurs specific costs: $w_{si}$ for labor, $r_{si}^G$ for green capital, and $r_{si}^B$ for brown capital. However, the model introduces an additional layer of complexity by incorporating market frictions, which are influenced by rising social concerns around Environmental, Social, and Governance (ESG) issues. These frictions, represented by $\tau_{G}$ for green capital, $\tau_{B}$ for brown capital, $\tau_{L}$ for labor, and $\tau_{P}$ for the product market, can either increase costs (when positive, indicating an added charge) or decrease them (when negative, indicating a subsidy). Furthermore, firms are required to pay a sector-wide emission tax, denoted by $\tau_{E}$.
+
+Given these factors, the profit equation for a firm can be structured as follows:
+\input{model_elements/firm nominal profit.tex}
+
+Here, the profit, $\pi_{si}$, is derived from the revenue (the product of the output price, $P_{si}$, and quantity, $Y_{si}$, adjusted for product market friction, $\tau_{si}^P$) minus the costs associated with inputs, taxes, and frictions. The cost term encapsulates expenses for labor, both types of capital, the emission tax, and any additional market frictions that the firm encounters. This model thus accounts for a range of economic and social factors influencing firm behavior, reflecting the complex interplay between profitability, market conditions, and societal expectations.
+
+To maximize the profit, a firm must strategically determine its input mix before setting the price of its product. This process begins with minimizing the cost of production for a predetermined output level, denoted as $\bar{Y}_{si}$. The optimal mix of inputs—specifically, the balance between green and brown capital, as well as the proportion of labor used—is critical in achieving cost efficiency(Check Appendix~\ref{Ap:optimal level for given output} for the proof).
+\begin{equation}\label{eq:capital_optimal_ratio}
+  \input{model_elements/capital optimal ratio.tex}
+\end{equation}
+This equation reflects the firm's preference for green over brown capital, influenced by the parameter $\alpha_s$, which indicates the importance of green capital in production. The ratio of marginal costs ($\frac{\partial Cost_{si}}{\partial B}/\frac{\partial Cost_{si}}{\partial G}$) adjusts the balance, taking into account the cost implications of each type of capital. The elasticity of substitution between green and brown capital, $\gamma_s$, further modifies this ratio, determining the firm's flexibility in substituting between the two capitals.
+
+For labor relative to the combined capital input ($\hat{K}{si}$), the optimal ratio ($z^l{si}$) is given by:
+\begin{equation}\label{eq:labor_optimal_ratio}
+  \input{model_elements/labor optimal ratio.tex}
+\end{equation}
+This equation integrates the capital-to-labor ratio within the production function, factoring in the importance of capital ($\beta_s$) and the predetermined optimal capital mix ($z^k_{si}$). The terms involving partial derivatives of costs with respect to labor and capital inputs adjust the ratio based on the relative cost efficiency of labor and capital.
+
+In essence, these equations guide the firm in adjusting its input mix to minimize production costs effectively, taking into account the price and efficiency of labor and capital, as well as market and environmental constraints. This analytical foundation enables a firm to optimize its production inputs before determining the optimal pricing strategy to maximize profit.
+
+The connection between firm output and emissions is explicitly considered, revealing the environmental consequences of production activities. The mathematical expression for the optimal level of emissions, which incorporates various factors including the firm's choice of inputs and its output level, is presented as follows:
+\input{model_elements/emission optimal level.tex}
+This equation, detailed in Appendix~\ref{Ap:optimal emission level}, outlines the linear relationship between emissions ($E_{si}$) and the firm's output ($\bar{Y}{si}$). The coefficient $\frac{\tilde{A}{si}}{\hat{A}{si}}$ captures the relative efficiency of production in terms of emissions, with $\tilde{A}{si}$ and $\hat{A}{si}$ representing emission productivity and total factor productivity, respectively. The term $\phi{si}$, an adjustment factor, integrates the environmental effects of the chosen capital mix through parameters such as $\mu_s$ (the importance of green capital), $\eta_s$ (the elasticity of substitution between green and brown capital), and the optimal capital ratio $z^k_{si}$. This formulation highlights how a firm's input decisions—specifically, the balance between green and brown capital and the labor-to-capital ratio ($z^l_{si}$)—affect its emissions, thereby linking economic decisions to their environmental impacts.\footnote{
+  I can use the same notation and drive the emission to sale ratio by using the fact that $\nu_s$ is normalized to 1. This can be done:
+  \begin{equation*}
+    \frac{E_{si}}{(P_{si}Y_{si})^{\frac{\sigma_s}{\sigma_s-1}}} = \frac{\psi_{si}}{\nu_s} = \psi_{si} 
+  \end{equation*}
+}
+
+
+
+After determining the optimal mix of inputs for production, a firm set the price of its product to maximize profit. This decision-making process involves calculating the optimal price, which, as delineated in Appendix~\ref{Ap:optimal price}, follows a specific formula:
+\input{model_elements/optimal price level.tex}
+
+This equation illustrates that the optimal pricing strategy for a firm involves setting a price that exceeds its marginal cost, $C_{si}$, by a markup. The magnitude of this markup is determined by the elasticity of substitution, $\sigma_s$, between the products in the sector. Specifically, the term $\frac{\sigma_s}{\sigma_s - 1}$ represents the markup factor, which is inversely related to the elasticity; a higher elasticity (indicating products are more substitutable) leads to a lower markup. The adjustment factor $\frac{1}{1+\tau_{si}^p}$ accounts for any product market frictions, denoted by $\tau_{si}^p$, which could be due to taxes, subsidies, or other market conditions affecting the final price.
+
+\subsection{Calibration} \label{sec:Calibration}
+With the theoretical framework, I proceed to calibrate its parameters using the available summary statistics. Calibration is vital as it aligns the model with empirical data, thus boosting its predictive accuracy and practical relevance.
+
+To initiate the calibration process, certain simplifying assumptions are necessary to effectively use the available data. Firstly, I assume that the emission function is solely influenced by brown capital, with $\theta_s = 1$ and $\mu_s = 0$. This assumption eliminates the need for estimating additional parameters, streamlining the calibration. Additionally, I presume there are no market frictions in the labor market ($\tau_L = 0$), product market ($\tau_P = 0$), green capital market ($\tau_G = 0$), and brown capital market ($\tau_B = 0$). These assumptions further reduce the complexity of the model by avoiding the estimation of extra parameters.
+
+The goal is to replicate the findings in Table 2 from \cite{martinsson2024effect}, which presents results as ratios of optimal emission to optimal output. To achieve this, I assume a perfectly competitive market scenario, where the elasticity of substitution between products from different firms within the industry is infinite ($\sigma_s = \infty$). This assumption simplifies the model further, facilitating the use of the summary statistics provided.
+
+Given these assumptions, I can rewrite the optimal emission level ratios as:
+\input{model_elements/simplified model}
+
+To align the model parameters with the provided summary statistics, I set $\beta_s$ to reflect the capital intensity at $0.6$. Considering the average annual wage in Sweden is $500,000$, I adjust the wage parameter, $w$, accordingly. The interest rate for capital is set at $11\%$, and I assume that there are no differences between the green and brown capital interest rates ($r_G=r_B = 11\%$).
+
+The calibration still requires adjustment for four critical variables: $\alpha_s$, $\gamma_s$, $\tilde{A}{si}$, and $\hat{A}{si}$. I simulate the model across approximately 1200 firms, mirroring the firm count in \cite{martinsson2024effect}, all within the same sector but varying in productivity levels related to emissions and production ($\tilde{A}{si}$ and $\hat{A}{si}$). The productivity levels are drawn from a lognormal distribution.
+
+Furthermore, to accurately represent the distribution as reported in \cite{martinsson2024effect}, I model firm-level workers using a lognormal distribution with a mean of 250 and a standard deviation of 900. Finally, to ensure the model accurately reflects the empirical data, the averages of $\hat{A}{si}$, $\tilde{A}{si}$, $\alpha_s$, and $\gamma_s$ are set to match the observed emission-to-sale ratio, total output, total emission, and the elasticity of the carbon tax on emission intensity as detailed in \cite{martinsson2024effect}.
+
+In the model, the importance of green capital in the production function ($\alpha_s$) and the elasticity of substitution ($\gamma_s$) is critical, as illustrated in the subsequent figures. Figure~\ref{fig:production_emission} delineates the relationship between production and emissions, highlighting the role of parameters on the effectiveness of the policy. The calibration process is meticulously conducted to ensure that the model parameters not only resonate with the empirical evidence but also augment the model's predictive capabilities and enable a nuanced analysis of the benefits associated with resource reallocation.
+
+\bigskip
+\centerline{\bf [Place Figure~\ref{fig:production_emission} about here]}
+\bigskip
+
+
+Based on the explanation provided, $\alpha_s$ is set to \input{values/alpha estimate} and $\gamma_s$ to \input{values/gamma estimate} to align with the observed emission-to-sale ratio and the elasticity of the carbon tax on emission intensity as reported in \cite{martinsson2024effect}. To match the empirical data on total output, the average values of $\hat{A}{si}$ and $\tilde{A}{si}$ are set to \input{values/A hat estimate} and \input{values/A tilde estimate}, respectively.
+
+One insightful approach is to evaluate three distinct environmental policies: a carbon tax, a green subsidy, and a brown tax. The green subsidy is implemented as a reduction in the interest rate on green capital, ranging from $0\%$ to $100\%$. Conversely, the brown tax is applied as an additional charge on the interest rate for brown capital, varying from $0\%$ to $400\%$. 
+
+Using the calibrated model, I simulate the impact of these policies on the carbon intensity of the economy. The outcomes are illustrated in Figure~\ref{fig:intensity_tax_premium}, which displays the effects of each policy on reducing carbon intensity. It is evident from the results that the carbon tax and the brown capital tax are equivalent in terms of their impact on carbon intensity, while the green subsidy is more effective in lowering carbon intensity. 
+
+\bigskip
+\centerline{\bf [Place Figure~\ref{fig:intensity_tax_premium} about here]}
+
+Furthermore, the model facilitates an analysis of these policies' effects on both production and emission levels within the economic framework. Figure~\ref{fig:emission_production} presents these dynamics, showing how the carbon tax and the brown capital tax curtail both production and emissions. Conversely, the green subsidy is associated with an augmentation in production levels without an increase in emissions. This analysis elucidates the complex interplay between environmental policies and economic activities, accentuating the inherent trade-offs between production efficiency and environmental sustainability. The combined implementation of a carbon tax and a green subsidy may offer an optimal strategy to balance these priorities, potentially enhancing economic productivity while concurrently mitigating emissions.
+
+\bigskip
+\centerline{\bf [Place Figure~\ref{fig:emission_production} about here]}
+
+\subsection{Reallocation} \label{sec:reallocation}
+
+To calculate the real gains from reallocation within the provided framework, I undertake a structured approach that leverages the model's theoretical foundation. This process involves several key steps, starting with the utilization of optimal input levels to ascertain the first-best output of each firm, and subsequently employing actual input levels to determine the actual output. By aggregating these outputs across firms within a sector, I can derive the economy-wide output under both optimal and actual scenarios. Comparing these outputs will then yield a measure of the real gains from reallocation, indicating the potential increase in efficiency and productivity through optimal resource distribution.
+
+For the productivity expressions, the model delineates the production and emission productivity of a firm as functions of observable variables (Appendix~\ref{Ap:productivity} for the proof), except $\nu_s$, which represents a sector-specific constant that does not vary across firms. The productivity equations are given as follows, with a note that in subsequent analysis, $\nu_s$ will be normalized to 1 to simplify the computation:
+\begin{equation}\label{eq:productivity}
+  \hat{A}_{si} = \input{model_elements/production technology compress.tex}, \quad \text{where} \quad \nu_s = \input{model_elements/production technology nu def.tex}
+\end{equation}
+\begin{equation}\label{eq:emission_productivity}
+  \tilde{A}_{si} = \input{model_elements/pollution technology.tex}
+\end{equation}
+These equations incorporate a range of observable variables to model the production and emission efficiency of firms accurately. Although $\nu_s$ is not directly observable, its normalization does not affect the relative comparison of productivity across firms, allowing for a consistent analysis of reallocation benefits. This approach underscores the model's capability to bridge theoretical constructs with practical, observable metrics, facilitating an empirical assessment of productivity and environmental impact within the economic framework.
+
+The final goalin optimizing resource allocation within an economy is to maximize output, which can be approached in two distinct manners depending on priorities: one method focuses on maximizing output without any emission constraints (Output Allocation), while the other incorporates these environmental constraints into the maximization process (Emission Allocation). Initially, in the absence of emission considerations, the strategy is to allocate resources—quantified as optimal amounts of green capital ($\hat{G}{si}$), brown capital ($\hat{B}{si}$), and labor ($\hat{L}{si}$), indicated by the hat notation—to fully maximize the productive potential of the economy. This pure output reallocation aims to enhance economic output to its highest feasible level by strategically deploying resources where they are most productive, without regard to the emissions generated in the process. Conversely, when environmental sustainability becomes a concurrent priority, the government seeks to balance the maximization of output with the goal of minimizing emissions. In this scenario, a different set of optimal resource levels—signified by the tilde notation ($\tilde{G}{si}$, $\tilde{B}{si}$, $\tilde{L}{si}$)—is determined to achieve a dual objective: pushing economic output towards its maximum while adhering to specified emission reduction targets. This nuanced approach to resource allocation underscores a commitment to both economic efficiency and environmental stewardship, illustrating a sophisticated strategy that aims to reconcile the often competing demands of maximizing output and minimizing environmental impact.
+
+As outlined in Appendix~\ref{Ap:reallocation}, due to firms within a sector employing identical technology, the ratios of optimal inputs—green capital, brown capital, and labor—are consistent across these firms. This consistency in input ratios ensures that, regardless of individual firm characteristics, each entity adopts a proportionate mix of resources to maximize production efficiency.
+\input{model_elements/reallocation firm input ratio.tex}
+
+Upon establishing optimal input ratios, the sector's total resources are strategically distributed among firms. In scenarios prioritizing output reallocation, resources are allocated to the most productive firms, thereby optimizing sector-wide productivity by leveraging the capabilities of top performers. This approach ensures that firms with the highest productivity receive the lion's share of resources, maximizing overall economic output.
+\input{model_elements/ouput allocation allocation.tex}
+
+Conversely, emission reallocation takes a more nuanced approach by considering both productivity and environmental efficiency. Here, firms that strike the best balance between high productivity and low emissions are prioritized, receiving a larger allocation of resources. This strategy aims to marry economic efficiency with environmental stewardship, allocating resources to firms that contribute to a reduction in emissions without significantly sacrificing productivity.
+\input{model_elements/emission allocation allocation.tex}
+
+These allocation strategies are underpinned by a sophisticated framework that considers the intricate balance between enhancing economic output and minimizing environmental impact. By meticulously allocating resources based on these criteria, the sector can achieve its dual goals of economic optimization and environmental sustainability.
+
+Once I know the optimal resource allocation, the subsequent step involves computing the optimal output and emissions by substituting these ideal inputs into the respective formulas for firm output \eqref{eq:firm_output} and emissions \eqref{eq:firm_emission}. This calculation yields the theoretical maximum output and minimum emissions achievable under optimal conditions. By aggregating these optimal outputs and emissions across all firms within a sector, and subsequently for the entire economy, a comprehensive picture of potential economic efficiency and environmental impact under ideal resource distribution is formed. Comparing these aggregated optimal figures with the actual observed outputs and emissions allows for the quantification of the real gains from resource reallocation, highlighting the extent to which strategic redistribution can enhance economic productivity while minimizing environmental detriment. 
+
+%% Calibration
+\bigskip

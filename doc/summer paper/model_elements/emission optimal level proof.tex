@@ -1,0 +1,24 @@
+First we need to convert the production capital ($\hat{K}_{si}$) to the emission capital ($\tilde{K}_{si}$):
+\begin{equation*}
+    \begin{split}
+        \tilde{K} = (
+        \mu_s G_{si}^{\frac{\eta_s-1}{\eta_s}} + (1-\mu_s) B_{si}^{\frac{\eta_s-1}{\eta_s}}
+    ) ^ {\frac{\eta_s}{\eta_s-1}} = G_{si}(\mu_s  + (1-\mu_s){z^k_{si}}^{(1-\eta_s )})^ {\frac{\eta_s}{\eta_s-1}}\\
+    \hat{K} = (
+        \alpha_s G_{si}^{\frac{\gamma_s-1}{\gamma_s}} + (1-\alpha_s) B_{si}^{\frac{\gamma_s-1}{\gamma_s}}
+    ) ^ {\frac{\gamma_s}{\gamma_s-1}} = G_{si}(\alpha_s  + (1-\alpha_s){z^k_{si}}^{(1-\gamma_s )})^ {\frac{\gamma_s}{\gamma_s-1}}
+    \end{split}
+\end{equation*}
+\begin{equation*}
+    \Rightarrow \phi_{si} \equiv \frac{\tilde{K}}{\hat{K}} = \frac{(\mu_s  + (1-\mu_s){z^k_{si}}^{(1-\eta_s )})^ {\frac{\eta_s}{\eta_s-1}}}{(\alpha_s  + (1-\alpha_s){z^k_{si}}^{(1-\gamma_s )}) ^{\frac{\gamma_s}{\gamma_s-1}}} = \frac{(\mu_s {z^k_{si}}^{(\eta_s -1)}  + (1-\mu_s))^ {\frac{\eta_s}{\eta_s-1}}}{(\alpha_s {z^k_{si}}^{(\gamma_s -1)}  + (1-\alpha_s))^{\frac{\gamma_s}{\gamma_s-1}}}
+\end{equation*}
+As we can see the $\phi_{si}$ is a function of $z^k_{si}$, $\mu_s$, $\alpha_s$ and $\gamma_s$. Now we can calculate the optimal emission level ($E_{si}$) as follows:
+\begin{equation*}
+    \begin{split}
+        E_{si} &= \tilde{A}_{si}\tilde{K}_{si}^{\theta_s} L_{si}^{1-\theta_s} = \tilde{A}_{si} \tilde{K}_{si} ({\frac{L_{si}}{\tilde{K}_{si}}})^{1-\theta_s}\\
+    &= \tilde{A}_{si} (\phi_{si} \hat{K}_{si}) ({\frac{L_{si}}{\phi_{si} \hat{K}_{si}}})^{1-\theta_s}\\
+    &= {\tilde{A}_{si}}{\phi_{si}}^{\theta_s} \hat{K}_{si} {z^{l}_{si}}^{1-\theta_s} \\
+   & = {\tilde{A}_{si}}{\phi_{si}}^{\theta_s}{z^{l}_{si}}^{\beta_s-\theta_s}\hat{K}_{si}{z^{l}_{si}}^{1-\beta_s}\\
+   & = \frac{\tilde{A}_{si}}{\hat{A}_{si}}(\frac{\phi_{si}}{z^{l}_{si}})^{\theta_s} {z^{l}_{si}}^{\beta_s} \bar{Y}_{si}
+    \end{split}
+\end{equation*}

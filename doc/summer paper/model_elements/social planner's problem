@@ -1,0 +1,10 @@
+\begin{equation}
+    \begin{array}{lc}
+        \max & \left(
+            \sum_i \hat{Y}_{si}^{\frac{\sigma-1}{\sigma}}
+        \right)^{\frac{\sigma}{\sigma-1}} \vspace{5pt}\\\vspace{5pt}
+        s.t. & \sum_i \hat{L}_{si} = L_s\\\vspace{5pt}
+        & \sum_i \hat{E}_{si} = E_s\\
+        & \sum_i \hat{G}_{si} + \hat{B}_{si} = K_s
+    \end{array}
+\end{equation}

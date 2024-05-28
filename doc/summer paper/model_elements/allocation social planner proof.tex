@@ -1,0 +1,56 @@
+It is the social planner's problem to reallocate resources, therefore there is no need to price the inputs. The social planner's problem is to maximize the total real output subject to the resource constraint. Firms in the economy will produce the optimal level of output given the zero cost of inputs. The social planner's problem is:
+\input{model_elements/social planner's problem}
+
+Now I will write the lagrangian for the social planner's problem. The social planner's problem is to maximize the total output in the economy subject to the resource constraint. The lagrangian is:
+\input{model_elements/social planner's problem - largranian}
+where $\lambda_L$, $\lambda_E$ are the lagrange multipliers for the labor and emission constraints, respectively that are normalized by the capital lagrange multiplier. This results in the fact that the relative marginal cost of labor is $\lambda_L$ and the relative marginal cost of acquiring one unit of capital is 1. Now I can use the results from the firm's problem and the optimal input ratios to derive the optimal output and emissions for the social planner. The optimal input ratios are:
+\input{model_elements/reallocation firm input ratio.tex}
+Then I can rewrite the optimal output and emissions for firm under the social planner's problem as:
+\input{model_elements/social planner's problem - firm output}
+and rewrite the lagrangian as:
+\begin{gather*}
+    \mathcal{L}_s = \left(
+        \sum_i \hat{A}_{si} {z_{s}^l}^{-\beta}\hat{L}_{si}^{\frac{\sigma-1}{\sigma}}
+    \right)^{\frac{\sigma}{\sigma-1}} + \lambda_L(L_s - \sum_i \hat{L}_{si}) + \lambda_E(E_s - \sum_i \tilde{A}_{si}(\frac{\phi_{s}}{z^{l}_{s}})^{\theta_s} \hat{L}_{si})\\
+    \frac{\partial \mathcal{L}_s}{\partial \hat{L}_{si}} = \left(
+        \sum_i \hat{A}_{sk} {z_{s}^l}^{-\beta}\hat{L}_{sk}^{\frac{\sigma-1}{\sigma}}
+    \right)^{\frac{1}{\sigma-1}}(\hat{A}_{si}{z_{s}^l}^{-\beta})^{\frac{\sigma-1}{\sigma}}\hat{L}_{si}^{-\frac{1}{\sigma}} - \lambda_L - \lambda_E \tilde{A}_{si}(\frac{\phi_{s}}{z^{l}_{s}})^{\theta_s} = 0\\
+    \frac{\partial \mathcal{L}_s}{\partial \hat{L}_{sj}} = \left(
+        \sum_i \hat{A}_{sk} {z_{s}^l}^{-\beta}\hat{L}_{sk}^{\frac{\sigma-1}{\sigma}}
+    \right)^{\frac{1}{\sigma-1}}(\hat{A}_{sj}{z_{s}^l}^{-\beta})^{\frac{\sigma-1}{\sigma}}\hat{L}_{sj}^{-\frac{1}{\sigma}} - \lambda_L - \lambda_E \tilde{A}_{sj}(\frac{\phi_{s}}{z^{l}_{s}})^{\theta_s} = 0
+\end{gather*}
+
+There are two possible cases for the optimal allocation of resources. In the first case, the social planner only cares about maximizing total output and does not consider emissions, resulting in $\lambda_E = 0$. In this scenario, the social planner will allocate all available resources to the firm with the highest productivity:
+\begin{gather*}
+    \lambda_L = \left(
+        \sum_i \hat{A}_{sk} {z_{s}^l}^{-\beta}\hat{L}_{sk}^{\frac{\sigma-1}{\sigma}}
+    \right)^{\frac{1}{\sigma-1}}(\hat{A}_{si}{z_{s}^l}^{-\beta})^{\frac{\sigma-1}{\sigma}}\hat{L}_{si}^{-\frac{1}{\sigma}} = \left(
+        \sum_i \hat{A}_{sk} {z_{s}^l}^{-\beta}\hat{L}_{sk}^{\frac{\sigma-1}{\sigma}}
+    \right)^{\frac{1}{\sigma-1}}(\hat{A}_{sj}{z_{s}^l}^{-\beta})^{\frac{\sigma-1}{\sigma}}\hat{L}_{sj}^{-\frac{1}{\sigma}}\\
+    \Rightarrow (\frac{\hat{A}_{si}^{\sigma-1}}{\hat{L}_{si}})^{\frac{1}{\sigma}} = (\frac{\hat{A}_{sj}^{\sigma-1}}{\hat{L}_{sj}})^{\frac{1}{\sigma}} \Rightarrow \frac{\hat{L}_{si}}{\hat{L}_{sj}} = \left(
+        \frac{\hat{A}_{si}}{\hat{A}_{sj}}
+    \right)^{\sigma-1}
+\end{gather*}
+ 
+In the second case, the social planner cares about the emissions, and the social planner will allocate all available resources to the firm with the lowest emissions:
+\begin{gather*}
+    \lambda_E = \dfrac{\left(
+        \sum_i \hat{A}_{sk} {z_{s}^l}^{-\beta}\hat{L}_{sk}^{\frac{\sigma-1}{\sigma}}
+    \right)^{\frac{1}{\sigma-1}}(\hat{A}_{si}{z_{s}^l}^{-\beta})^{\frac{\sigma-1}{\sigma}}\hat{L}_{si}^{-\frac{1}{\sigma}}}{
+        \tilde{A}_{si}(\frac{\phi_{s}}{z^{l}_{s}})^{\theta_s}
+    } = \dfrac{\left(
+        \sum_i \hat{A}_{sk} {z_{s}^l}^{-\beta}\hat{L}_{sk}^{\frac{\sigma-1}{\sigma}}
+    \right)^{\frac{1}{\sigma-1}}(\hat{A}_{sj}{z_{s}^l}^{-\beta})^{\frac{\sigma-1}{\sigma}}\hat{L}_{sj}^{-\frac{1}{\sigma}}}{
+        \tilde{A}_{sj}(\frac{\phi_{s}}{z^{l}_{s}})^{\theta_s}
+    }\\
+    \Rightarrow \frac{\hat{A}_{si}^{\frac{\sigma-1}{\sigma}}}{\tilde{A}_{si}\tilde{L}_{si}^{\frac{1}{\sigma}}} = \frac{\hat{A}_{sj}^{\frac{\sigma-1}{\sigma}}}{\tilde{A}_{sj}\tilde{L}_{sj}^{\frac{1}{\sigma}}} \Rightarrow \frac{\tilde{L}_{si}}{\tilde{L}_{sj}} = \dfrac{\hat{A}_{si}^{\sigma-1}/\tilde{A}_{si}^{\sigma}}{\hat{A}_{sj}^{\sigma-1}/\tilde{A}_{sj}^{\sigma}}
+\end{gather*}
+as we know the optimal ratio, we can make sure that the allocation satisfies the budget constraint. The optimal allocation of resources is:
+\input{model_elements/allocation social planner L.tex}
+and we know that the social planner will decide about the green and brown capital allocation in the sector. The optimal allocation of green and brown capital is:
+\begin{gather*}
+    B_s = \dfrac{1}{1 + z_s^k} K_s \\ 
+    G_s = \dfrac{z_s^k}{1 + z_s^k} K_s
+\end{gather*}
+\input{model_elements/allocation social planner G.tex}
+\input{model_elements/allocation social planner B.tex}
