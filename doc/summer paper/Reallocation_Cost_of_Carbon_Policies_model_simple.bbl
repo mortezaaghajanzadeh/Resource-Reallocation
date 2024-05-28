@@ -1,0 +1,29 @@
+
+
+% Bibstyle aea.bst version 2009.05.20
+
+\begin{thebibliography}{xx}
+
+\harvarditem[Blundell \harvardand\ Bond]{Blundell \harvardand\
+  Bond}{2000}{blundell2000gmm}
+{\bf Blundell, Richard, and Stephen Bond.} 2000. ``GMM estimation with
+  persistent panel data: an application to production functions.'' {\em
+  Econometric reviews}, 19(3):~321--340.
+
+\harvarditem[Davis, Fisher, \harvardand\ Whited]{Davis, Fisher, \harvardand\
+  Whited}{2014}{davis2014macroeconomic}
+{\bf Davis, Morris~A, Jonas~DM Fisher, and Toni~M Whited.} 2014.
+  ``Macroeconomic implications of agglomeration.'' {\em Econometrica},
+  82(2):~731--764.
+
+\harvarditem[Kmenta]{Kmenta}{1967}{kmenta1967estimation}
+{\bf Kmenta, Jan.} 1967. ``On estimation of the CES production function.'' {\em
+  International Economic Review}, 8(2):~180--189.
+
+\harvarditem[Martinsson et~al.]{Martinsson et~al.}{2024}{martinsson2024effect}
+{\bf Martinsson, Gustav, L{\'a}szl{\'o} Sajtos, Per Str{\"o}mberg, and
+  Christian Thomann.} 2024. ``The Effect of Carbon Pricing on Firm Emissions:
+  Evidence from the Swedish CO2 Tax.'' {\em The Review of Financial Studies},
+  hhad097.
+
+\end{thebibliography}

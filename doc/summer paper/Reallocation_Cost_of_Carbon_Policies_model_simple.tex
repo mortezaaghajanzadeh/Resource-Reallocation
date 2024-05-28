@@ -1,0 +1,210 @@
+\documentclass[12pt]{article} % Set the font size to 12pt
+\usepackage[margin=2.5cm]{geometry} % Set the margin 
+
+% Packages
+\usepackage{amsmath} % For mathematical symbols and equations
+\usepackage{graphicx} % For including images
+\usepackage{lipsum} % For generating dummy text
+\usepackage{mathtools} % For mathematical symbols and equations
+\usepackage{amssymb} % For mathematical symbols and equations
+\usepackage{hyperref} % For hyperlinks
+\usepackage{natbib} % For bibliography
+\usepackage{booktabs} % For tables
+% Document information
+\input{section/info.tex}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    \input{section/abstract.tex}    
+\end{abstract}
+
+\section*{Environment and Technology}
+
+\begin{itemize}
+    \item Total real output is:
+    \input{model_elements/Total real benefit of finance}
+
+    \item The real output in each sector $s$ is:
+    \input{model_elements/Sector real benefit.tex}
+
+    \item The real output for firms $i$ in sector $s$ is:
+	\input{model_elements/firm benefit.tex}
+    
+	\item The firm's emission is:
+	\input{model_elements/firm emission simple.tex}
+
+    \item The nominal profit for firms:
+    \input{model_elements/firm nominal profit.tex}
+    
+\end{itemize}
+\section*{Optimal Allocation}
+\begin{itemize}
+    \item To maximize profit, the firm follows a two-step process. First, it determines the optimal combination of capital and labor. Then, it selects the appropriate price level.
+    \begin{equation*}
+        \max_{{G_{si},B_{si},L_{si}}}  \quad
+            - 		Cost \quad \text{s.t.} \quad \quad \hat{A}_{si}\hat{K}_{si}^{\beta_s} L_{si}^{1-\beta_s} = \bar{Y}_{si}
+    \end{equation*}
+
+    \begin{equation}
+        {\frac{G_{si}}{B_{si}} = {z_{si}^k}} {=  \left(
+            \frac{\alpha_s}{1-\alpha_s} \frac{(1+{\tau_s^B})r_{si} + {\tau_s^E}\tilde{A}}{(1+{\tau_s^G})r_{si}}
+        \right) ^{\frac{1}{\gamma_s}}}
+    \end{equation}
+
+    \begin{equation}
+        {\frac{L_{si}}{\hat{K}_{si}} = {z_{si}^l}}
+        { = \frac{1-\beta}{\beta}\frac{1}{\alpha_s}\left(
+            \alpha_s + (1-\alpha_s) {{z_{si}^k}}^{1-\gamma_s}
+        \right)^{\frac{1}{1-\gamma_s}} \frac{(1+{\tau_s^G})r_{si}}{(1+{\tau_s^W})w_{si}}}
+    \end{equation}
+  
+
+    \item Let's define the use the optimal ratios (\input{model_elements/optimal ratio.tex})
+    
+    \item Optimal capital level for given output is (see appendix \ref{Ap:optimal level for given output} for proof):
+    \input{model_elements/optimal levels.tex}
+
+    \item The emission level for given output is (see appendix \ref{Ap:emission optimal level} for proof):
+    \begin{equation}
+        {E_{si} = \frac{\tilde{A}_{si}}{\hat{A}_{si}}\left(
+            \alpha_s {{z_{si}^k}}^{\gamma_s - 1} + (1-\alpha_s)
+        \right) ^ {\frac{\gamma_s}{1-\gamma_s}} {{z_{si}^l}}^{1 - \beta} \bar{Y}_{si} }
+        {= {\psi_{si}}\bar{Y}_{si}}
+    \end{equation}
+    
+    \item The cost of production is (see appendix \ref{Ap:cost minimization function} for details of the definition):
+    \input{model_elements/cost minimization funtion.tex}
+    
+    \item The optimal price level is (see appendix \ref{Ap:firm_price} for proof):
+    \input{model_elements/optimal price level.tex}
+
+\end{itemize}
+
+\section*{Technology}
+We need to find an expression for the technologies ($\hat{A}_{si}$ and $\tilde{A}_{si}$) based on observable variables. (see appendix \ref{Ap:Productiontechnology} and \ref{Ap:Emissiontechnology} for proof)
+
+\begin{equation*}
+    \hat{A}_{si} = \input{model_elements/production technology compress.tex}, \quad \text{where} \quad \nu_s = \input{model_elements/production technology nu def.tex}
+\end{equation*}
+
+\begin{equation*}
+    \tilde{A}_{si} = \frac{E_{si}}{B_{si}}
+\end{equation*}
+
+
+
+\section*{Wedges}
+\begin{itemize}
+    \item The marginal nominal product of each input should be equal to the marginal cost of that for the maximizing firm (see appendix \ref{Ap:wedges} for proof).
+	\input{model_elements/wedges.tex}
+\end{itemize}
+\section*{Estimation}
+\input{section/estimation_appendix.tex}
+\clearpage
+
+
+\section*{Additional Moments}
+\begin{enumerate}
+    \item 
+    \begin{equation*}
+        \begin{split}
+            \ln z_k =& \frac{1}{\gamma} (
+            \ln \frac{\alpha}{1-\alpha} + \ln ({r^B + \tau_E\tilde{A}}) - \ln {\tilde{A}} )\\
+            \Rightarrow & \frac{\partial z_k/\partial \tau_E }{z_k} = \frac{1}{\gamma} \frac{\tilde{A}}{r^B + \tau_E\tilde{A}}\\
+        \end{split}
+    \end{equation*}
+    \item 
+    \begin{equation*}
+        \begin{split}
+            \ln z_l =& \ln \frac{1-\beta}{\beta} - \ln {\alpha} + \frac{1}{1-\gamma} \ln (\alpha + (1-\alpha) {{z_k}}^{1-\gamma}) + \ln r^G - \ln W\\
+            \Rightarrow & \frac{\partial z_l/\partial \tau_E }{z_l} =  \frac{(1-\alpha)z_k^{-\gamma}}{\alpha + (1-\alpha) {{z_k}}^{1-\gamma}}\frac{\partial z_k}{\partial \tau_E} = \frac{\tilde{A}/\gamma}{r^B + \tau_E\tilde{A}}\frac{1}{\frac{\alpha}{1-\alpha}{{z_k}}^{\gamma-1} + 1}
+        \end{split}
+    \end{equation*}
+    
+    \item 
+    \begin{equation*}
+        \begin{split}
+            & \frac{E}{\nu_{s}(PY)^{\frac{\sigma_s}{\sigma_s - 1}}}  = \frac{\tilde{A}}{\hat{A}}\left(
+                \alpha_s {{z^k}}^{\gamma_s - 1} + (1-\alpha_s)
+            \right) ^ {\frac{\gamma_s}{1-\gamma_s}} {{z_l}}^{1 - \beta} , \quad \epsilon \equiv  \frac{E}{PY}\\
+            \Rightarrow & \ln \epsilon =  \ln \frac{\tilde{A}}{\hat{A}} + \frac{\gamma_s}{1-\gamma_s} \ln \left(
+                \alpha_s {{z^k}}^{\gamma_s - 1} + (1-\alpha_s)
+            \right) + (1-\beta) \ln {{z_l}} + \frac{1}{\sigma -1} \ln R + \ln \nu_{s} \\
+            \Rightarrow &\ln \epsilon \sim \ln \frac{\tilde{A}}{\hat{A}} + \alpha \ln z_k + \frac{\alpha(1-\alpha)(\gamma-1)}{2} (\ln z_k)^2 + (1-\beta) \ln {{z_l}} + \frac{1}{\sigma -1} \ln R + \ln \nu_{s} \\
+            \Rightarrow& \ln \epsilon = \mu_i + \mu_t + \beta_{z_k}^{\epsilon} \ln z_k + \beta_{z_k^2}^{\epsilon} (\ln z_k)^2 + \beta_{z_l}^{\epsilon} \ln z_l + \beta_{R}^{\epsilon} \ln R  \\\\
+            &     \qquad\qquad\qquad        \beta_{z_k}^{\epsilon} = \alpha \rightarrow \alpha \checkmark\\
+            &     \qquad\qquad\qquad        \beta_{z_k^2}^{\epsilon} = \frac{\alpha(1-\alpha)(\gamma-1)}{2}\rightarrow \gamma \checkmark \\
+            &     \qquad\qquad\qquad        \beta_{z_l}^{\epsilon} = 1-\beta \rightarrow \beta\checkmark\\
+            &     \qquad\qquad\qquad        \beta_{R}^{\epsilon} = \frac{1}{\sigma -1} \rightarrow \sigma \checkmark
+            \\\\\\
+            \Rightarrow & \frac{\partial \epsilon/\partial \tau_E}{\epsilon} =  -\frac{\gamma_s}{\alpha_s {{z^k}}^{\gamma_s - 1} + (1-\alpha_s)} {\alpha_s z_k^{\gamma_s}} \frac{\partial z_k}{\partial \tau_E} + \frac{1-\beta}{z_l} \frac{\partial z_l}{\partial \tau_E} + \frac{1}{(\sigma -1)R} \frac{\partial R}{\partial \tau_E}
+        \end{split}
+    \end{equation*}
+\end{enumerate}
+
+\clearpage
+
+\section{Definitions and Proofs} 
+\subsection{Optimal level for given output} \label{Ap:optimal level for given output}
+\begin{equation*}
+    \bar{Y}_{si} = \hat{A}_{si} \hat{K^*}_{si}^{\beta_s} {L^*}_{si}^{1-\beta_s} = \hat{A}_{si} \hat{K^*}_{si} ({\frac{L^*}{\hat{K^*}}})_{si}^{(1-\beta_s)}= \hat{A}_{si} \hat{K^*}_{si} {z_{si}^l}^{(1-\beta_s)}
+\end{equation*}
+we can rewrite the optimal capital level as:
+\begin{equation*}
+    \begin{split}
+        \hat{K}_{si} &= \input{model_elements/optimal level of K based on B.tex}\\
+        & = \input{model_elements/optimal level of K based on G.tex}
+    \end{split}
+\end{equation*}
+and then drive the optimal level of each type of capital:
+\begin{equation*}
+    G_{si}^* = \input{model_elements/optimal G.tex}
+\end{equation*}
+\begin{equation*}
+    B_{si}^* = \input{model_elements/optimal B.tex}
+\end{equation*}
+\begin{equation*}
+    L_{si}^* = \input{model_elements/optimal L.tex}
+\end{equation*}
+
+\subsection{Emission optimal level} \label{Ap:emission optimal level}
+\input{model_elements/emission optimal level proof.tex}
+
+\subsection{Cost Minimization function} \label{Ap:cost minimization function}
+\input{model_elements/cost minimization function def.tex}
+
+\subsection{Sector Price} \label{Ap:sector price}
+ We need to solve the sector price $P_s$ as function of firm price $P_{si}$, where $P_s$ is defined as the price of acquiring a unit of the sector benefit:
+    \input{model_elements/sector price solution.tex}
+
+\subsection{Firm Price} \label{Ap:firm_price}
+We need to solve the firm price $P_{si}$ as function of sector price $P_s$, where $P_{si}$ is defined as the price of acquiring a unit of the firm benefit:
+    \input{model_elements/optimal price level proof.tex}
+
+\subsection{Production Technology}
+\label{Ap:Productiontechnology}
+\input{model_elements/production technology proof.tex}
+\subsection{Emission Technology}
+\label{Ap:Emissiontechnology}
+\input{model_elements/pollution technology proof.tex}
+
+
+\subsection{Reallocation} \label{Ap:reallocation}
+
+
+\input{model_elements/allocation social planner proof.tex}
+
+\subsection{Wedges} \label{Ap:wedges}
+From the \ref{Ap:sector price} we know that $Y_{si} = (\frac{P_s}{ P_{si}})^{\sigma_s}{Y}_s $ and then we can put it in the nominal output for firms:
+\input{model_elements/marginal benefit G proof.tex}
+And then we can derive the marginal benefit of the brown capital:
+\input{model_elements/marginal benefit B proof.tex}
+And finally, we can derive the marginal benefit of labor:
+\input{model_elements/marginal benefit L proof.tex}
+\subsection*{}
+\bibliographystyle{aea}
+\bibliography{literature}
+\end{document}
