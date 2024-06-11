@@ -85,9 +85,10 @@
             \quad C_{si}  =  \frac{1}{\hat{A}_{si}} {z_{si}^l}^{-\beta_s}  \left[\right. &
          r^{G}_{si}(\alpha_s {z_{si}^k}^{(\gamma_s-1)} + (1-\alpha_s))
 			^{\frac{\gamma_s}{1-\gamma_s}} {z_{si}^l} \\
-            +&(r^{B}_{si} + \tau_{E}\tilde{A}_{si})(
+            + & (r^{B}_{si} + \tau_{E}\tilde{A}_{si})(
 				\alpha_s  + (1-\alpha_s){z^k_{si}}^{(1-\gamma_s )}
-			)^{\frac{\gamma_s}{1-\gamma_s}} {z_{si}^l}+ w_{si} \left.\right]
+			)^{\frac{\gamma_s}{1-\gamma_s}} {z_{si}^l}\\
+            + & w_{si} \left.\right]
          \end{split}
 	\end{equation*}
     \item Then the optimal output is:
@@ -162,10 +163,32 @@ We need to find an expression for the technologies ($\hat{A}_{si}$ and $\tilde{A
     \end{equation*}
     \begin{equation*}
         \begin{split}
-            \Rightarrow & \frac{\partial P_iY_i/\partial\tau_E}{P_iY_i} = (1-\sigma_s) \frac{\partial p_i/\partial\tau_E}{p_i} \\
-            \Rightarrow & 
+            \Rightarrow  \frac{\partial P_iY_i/\partial\tau_E}{P_iY_i} & = (1-\sigma_s) \frac{\partial p_i/\partial\tau_E}{p_i} \\
+             &  = (1-\sigma_s) \frac{\partial \frac{\sigma_s}{\sigma_s - 1} C_{si}/\partial\tau_E}{p_i}\\
+                & =  \frac{- \sigma_s}{p_i} \frac{\partial C_i}{\partial\tau_E} 
         \end{split}
     \end{equation*}
+    Let's define $X_{it}$ as:
+    \begin{equation*}
+        X_{it} =  r^{G}_{si}(\alpha_s {z_{si}^k}^{(\gamma_s-1)} + (1-\alpha_s))
+            ^{\frac{\gamma_s}{1-\gamma_s}} {z_{si}^l} + (r^{B}_{si} + \tau_{E}\tilde{A}_{si})(
+                \alpha_s  + (1-\alpha_s){z^k_{si}}^{(1-\gamma_s )}
+            )^{\frac{\gamma_s}{1-\gamma_s}} {z_{si}^l} + w_{si} 
+    \end{equation*}
+    \begin{equation*}
+        \begin{split}
+            \Rightarrow \ln C_i & =  -\ln \hat{A}_{si} - \beta_s \ln z_l +  \ln X_{it} \\
+            \Rightarrow \frac{\partial C_i/\partial\tau_E}{C_i} & = -\beta_s \frac{\partial z_l/\partial\tau_E}{z_l} + \frac{\partial X_{it}/\partial\tau_E }{X_{it}}\\
+        \end{split}
+    \end{equation*}
+    \begin{equation*}
+        \begin{split}
+            \frac{\partial X_{it}}{\partial\tau_E } & =  \frac{\partial }{\partial\tau_E } \left[
+                (r^{G}_{si}\square^{\frac{\gamma_s}{1-\gamma_s}}  + (r^{B}_{si} + \tau_{E}\tilde{A}_{si})\circ^{\frac{\gamma_s}{1-\gamma_s}} ){z_{si}^l} + w_{si} \right]\\
+                & = (X_{it} - w_{si})\frac{\partial z_l}{\partial\tau_E} + {\frac{\gamma_s}{1-\gamma_s}}(r^G \square^{\frac{2\gamma_s-1}{1-\gamma_s}} \frac{\partial \square}{\partial\tau_E } + (r^B + \tau_{E}\tilde{A})\frac{\partial \circ}{\partial\tau_E } + \tilde{A}\circ){z_{si}^l} \\
+        \end{split}
+    \end{equation*}
+ 
     \item 
     \begin{equation*}
         \begin{split}
