@@ -80,16 +80,25 @@
     
     \item The optimal price level is (see appendix \ref{Ap:firm_price} for proof):
     \input{model_elements/optimal price level.tex}
-
+    \begin{equation*}
+         \begin{split}
+            \quad C_{si}  =  \frac{1}{\hat{A}_{si}} {z_{si}^l}^{-\beta_s}  \left[\right. &
+         r^{G}_{si}(\alpha_s {z_{si}^k}^{(\gamma_s-1)} + (1-\alpha_s))
+			^{\frac{\gamma_s}{1-\gamma_s}} {z_{si}^l} \\
+            +&(r^{B}_{si} + \tau_{E}\tilde{A}_{si})(
+				\alpha_s  + (1-\alpha_s){z^k_{si}}^{(1-\gamma_s )}
+			)^{\frac{\gamma_s}{1-\gamma_s}} {z_{si}^l}+ w_{si} \left.\right]
+         \end{split}
+	\end{equation*}
     \item Then the optimal output is:
     \begin{equation}
         \begin{split}
-            Y_{si} = P_s^{\sigma_s} {Y}_s \frac{1}{P_{si} ^{\sigma_s}} = \left(\frac{P_s}{P_{si}}\right)^{\sigma_s}{Y}_s = \nu_s \frac{1}{P_{si} ^{\sigma_s}}
+            Y_{si} = \left(\frac{P_s}{P_{si}}\right)^{\sigma_s}{Y}_s = P_s^{\sigma_s} {Y}_s \frac{1}{P_{si} ^{\sigma_s}}  = \kappa_s \frac{1}{P_{si} ^{\sigma_s}}
         \end{split}
     \end{equation}
     \item The optimal labor level is:
     \begin{equation}
-        L_{si} = \frac{\nu_s}{\hat{A}_{si}P_{si} ^{\sigma_s}}  {z_{si}^l}^{-\beta_s}
+        L_{si} = \frac{\kappa_s}{\hat{A}_{si}P_{si} ^{\sigma_s}}  {z_{si}^l}^{-\beta_s}
     \end{equation}
 \end{itemize}
 
@@ -122,10 +131,19 @@ We need to find an expression for the technologies ($\hat{A}_{si}$ and $\tilde{A
     \begin{equation*}
         \begin{split}
             \ln z_k =& \frac{1}{\gamma} (
-            \ln \frac{\alpha}{1-\alpha} + \ln ({r^B + \tau_E\tilde{A}}) - \ln {\tilde{A}} )\\
+            \ln \frac{\alpha}{1-\alpha} + \ln ({r^B + \tau_E\tilde{A}}) - \ln {r^G} ) =  \frac{1}{\gamma} (\ln \frac{\alpha}{1-\alpha} - \ln {r^G}) + \frac{1}{\gamma} \ln ({r^B + \tau_E\tilde{A}})\\
+            \\
             \Rightarrow & \frac{\partial z_k/\partial \tau_E }{z_k} = \frac{1}{\gamma} \frac{\tilde{A}}{r^B + \tau_E\tilde{A}}\\
         \end{split}
     \end{equation*}
+
+    Regression:
+    \begin{equation*}
+        \ln z_k = \mu_i + \mu_t + \beta_{\tau_E}^{z_k} \tau_E + \epsilon_{z_k}
+    \end{equation*}
+
+
+
     \item 
     \begin{equation*}
         \begin{split}
@@ -133,7 +151,21 @@ We need to find an expression for the technologies ($\hat{A}_{si}$ and $\tilde{A
             \Rightarrow & \frac{\partial z_l/\partial \tau_E }{z_l} =  \frac{(1-\alpha)z_k^{-\gamma}}{\alpha + (1-\alpha) {{z_k}}^{1-\gamma}}\frac{\partial z_k}{\partial \tau_E} = \frac{\tilde{A}/\gamma}{r^B + \tau_E\tilde{A}}\frac{1}{\frac{\alpha}{1-\alpha}{{z_k}}^{\gamma-1} + 1}
         \end{split}
     \end{equation*}
-    
+
+    Regression:
+    \begin{equation*}
+        \ln z_l = \mu_i + \mu_t + \beta_{\tau_E}^{z_l} \tau_E + \epsilon_{z_l}
+    \end{equation*}
+    \item 
+    \begin{equation*}
+        Y_i = \kappa_s p_i^{-\sigma_s} \Rightarrow P_iY_i = \kappa_s p_i^{1-\sigma_s} \Rightarrow \ln P_iY_i = \ln \kappa_s + (1-\sigma_s) \ln p_i
+    \end{equation*}
+    \begin{equation*}
+        \begin{split}
+            \Rightarrow & \frac{\partial P_iY_i/\partial\tau_E}{P_iY_i} = (1-\sigma_s) \frac{\partial p_i/\partial\tau_E}{p_i} \\
+            \Rightarrow & 
+        \end{split}
+    \end{equation*}
     \item 
     \begin{equation*}
         \begin{split}
@@ -142,17 +174,25 @@ We need to find an expression for the technologies ($\hat{A}_{si}$ and $\tilde{A
             \right) ^ {\frac{\gamma_s}{1-\gamma_s}} {{z_l}}^{1 - \beta} , \quad \epsilon \equiv  \frac{E}{PY}\\
             \Rightarrow & \ln \epsilon =  \ln \frac{\tilde{A}}{\hat{A}} + \frac{\gamma_s}{1-\gamma_s} \ln \left(
                 \alpha_s {{z^k}}^{\gamma_s - 1} + (1-\alpha_s)
-            \right) + (1-\beta) \ln {{z_l}} + \frac{1}{\sigma -1} \ln R + \ln \nu_{s} \\
-            \Rightarrow &\ln \epsilon \sim \ln \frac{\tilde{A}}{\hat{A}} + \alpha \ln z_k + \frac{\alpha(1-\alpha)(\gamma-1)}{2} (\ln z_k)^2 + (1-\beta) \ln {{z_l}} + \frac{1}{\sigma -1} \ln R + \ln \nu_{s} \\
-            \Rightarrow& \ln \epsilon = \mu_i + \mu_t + \beta_{z_k}^{\epsilon} \ln z_k + \beta_{z_k^2}^{\epsilon} (\ln z_k)^2 + \beta_{z_l}^{\epsilon} \ln z_l + \beta_{R}^{\epsilon} \ln R  \\\\
+            \right) + (1-\beta) \ln {{z_l}} + \frac{1}{\sigma -1} \ln PY + \ln \nu_{s} \\
+            \Rightarrow & \frac{\partial \epsilon/\partial \tau_E}{\epsilon} =  -\frac{\gamma_s}{\alpha_s {{z^k}}^{\gamma_s - 1} + (1-\alpha_s)} {\alpha_s z_k^{\gamma_s}} \frac{\partial z_k}{\partial \tau_E} + \frac{1-\beta}{z_l} \frac{\partial z_l}{\partial \tau_E} + \frac{1}{(\sigma -1)PY} \frac{\partial PY}{\partial \tau_E}
+        \end{split}
+    \end{equation*}
+    Regression:
+    \begin{equation*}
+        \begin{split}
+            \Rightarrow &\ln \epsilon \sim \ln \frac{\tilde{A}}{\hat{A}} + \alpha \ln z_k + \frac{\alpha(1-\alpha)(\gamma-1)}{2} (\ln z_k)^2 + (1-\beta) \ln {{z_l}} + \frac{1}{\sigma -1} \ln PY + \ln \nu_{s} \\
+            \Rightarrow& \ln \epsilon = \mu_i + \mu_t + \beta_{z_k}^{\epsilon} \ln z_k + \beta_{z_k^2}^{\epsilon} (\ln z_k)^2 + \beta_{z_l}^{\epsilon} \ln z_l + \beta_{R}^{\epsilon} \ln PY  \\\\
             &     \qquad\qquad\qquad        \beta_{z_k}^{\epsilon} = \alpha \rightarrow \alpha \checkmark\\
             &     \qquad\qquad\qquad        \beta_{z_k^2}^{\epsilon} = \frac{\alpha(1-\alpha)(\gamma-1)}{2}\rightarrow \gamma \checkmark \\
             &     \qquad\qquad\qquad        \beta_{z_l}^{\epsilon} = 1-\beta \rightarrow \beta\checkmark\\
             &     \qquad\qquad\qquad        \beta_{R}^{\epsilon} = \frac{1}{\sigma -1} \rightarrow \sigma \checkmark
-            \\\\\\
-            \Rightarrow & \frac{\partial \epsilon/\partial \tau_E}{\epsilon} =  -\frac{\gamma_s}{\alpha_s {{z^k}}^{\gamma_s - 1} + (1-\alpha_s)} {\alpha_s z_k^{\gamma_s}} \frac{\partial z_k}{\partial \tau_E} + \frac{1-\beta}{z_l} \frac{\partial z_l}{\partial \tau_E} + \frac{1}{(\sigma -1)R} \frac{\partial R}{\partial \tau_E}
         \end{split}
     \end{equation*}
+
+
+
+    
 \end{enumerate}
 
 \clearpage
