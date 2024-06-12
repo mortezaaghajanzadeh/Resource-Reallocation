@@ -139,7 +139,7 @@ We need to find an expression for the technologies ($\hat{A}_{si}$ and $\tilde{A
             \ln z_k =& {\gamma} (
             \ln \frac{\alpha}{1-\alpha} + \ln ({r^B + \tau_E\tilde{A}}) - \ln {r^G} ) =  {\gamma} (\ln \frac{\alpha}{1-\alpha} - \ln {r^G}) + {\gamma} \ln ({r^B + \tau_E\tilde{A}})\\
             \\
-            \Rightarrow & \frac{\partial z_k/\partial \tau_E }{z_k} = {\gamma} \frac{\tilde{A}}{r^B + \tau_E\tilde{A}}\\
+            \Rightarrow & \frac{\partial z_k/\partial \tau_E }{z_k} = {\gamma} \frac{\tilde{A}}{r^B + \tau_E\tilde{A}}>0
         \end{split}
     \end{equation*}
 
@@ -155,10 +155,15 @@ We need to find an expression for the technologies ($\hat{A}_{si}$ and $\tilde{A
         % (\alpha_s  + (1-\alpha_s){z^k_{si}}^{-\frac{\gamma_s-1}{\gamma_s}})^{\frac{\gamma_s}{\gamma_s-1}}
         \begin{split}
             \ln z_l =& \ln \frac{1-\beta}{\beta} - \ln {\alpha} +\frac{1}{\gamma_s-1} \ln (\alpha_s  + (1-\alpha_s){z^k_{si}}^{-\frac{\gamma_s-1}{\gamma_s}}) + \ln r^G - \ln W\\
-            \Rightarrow & \frac{\partial z_l/\partial \tau_E }{z_l} =  \frac{\frac{-1}{\gamma}(1-\alpha)z_k^{\frac{1-2\gamma}{\gamma}}}{\alpha_s  + (1-\alpha_s){z^k_{si}}^{-\frac{\gamma_s-1}{\gamma_s}}}
+            \Rightarrow & \frac{\partial z_l/\partial \tau_E }{z_l} =  \frac{\frac{-1}{\gamma}(1-\alpha)z_k^{\frac{1-2\gamma}{\gamma}}\frac{-(\gamma-1)}{\gamma}}{\alpha_s  + (1-\alpha_s){z^k_{si}}^{-\frac{\gamma_s-1}{\gamma_s}}}
             \frac{\partial z_k}{\partial \tau_E} = 
-            \frac{-1}{\frac{\alpha_s}{1-\alpha_s}{z^k_{si}}^{\frac{2\gamma_s-1}{\gamma_s}}  + (1-\alpha_s)}\frac{\tilde{A}}{r^B + \tau_E\tilde{A}}
+            \frac{1}{\frac{\alpha_s}{1-\alpha_s}{z^k_{si}}^{\frac{2\gamma_s-1}{\gamma_s}}  + z^k_{si}}\frac{1}{\gamma}\frac{\partial z_k}{\partial \tau_E}\\
+            & =  
+            \frac{1}{z^k_{si}(\frac{\alpha_s}{1-\alpha_s}{z^k_{si}}^{\frac{\gamma_s-1}{\gamma_s}}  + 1)}\frac{1}{\gamma}\frac{\partial z_k}{\partial \tau_E} = \frac{1-\alpha}{{\alpha z^k_{si}}^{\frac{\gamma_s-1}{\gamma_s}} + (1-\alpha)}\frac{\tilde{A}}{r^B + \tau_E\tilde{A}}
         \end{split}
+    \end{equation*}
+    \begin{equation*}
+        \Rightarrow \frac{\partial z_l/\partial \tau_E }{z_l} = \frac{1-\alpha}{{\alpha z^k_{si}}^{\frac{\gamma_s-1}{\gamma_s}} + (1-\alpha)}\frac{\tilde{A}}{r^B + \tau_E\tilde{A}} >0
     \end{equation*}
 
     Regression:
