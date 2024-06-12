@@ -3,13 +3,12 @@
 	\end{equation*}
 	\begin{equation*}
 		\begin{split}
-			\text{where} \quad C_{si}  &  = (1+ \tau_{G_{si}}) r^{G}_{si} \frac{1}{\hat{A}_{si}} \left(
-				\alpha_s {z_{si}^k}^{(\gamma_s-1)} + (1-\alpha_s)
-			\right)^{\frac{\gamma_s}{1-\gamma_s}} {z_{si}^l}^{(1-\beta_s)} \\
-			& + (1+ \tau_{B_{si}})r^{B}_{si}\frac{1}{\hat{A}_{si}} \left(
-				\alpha_s  + (1-\alpha_s){z^k_{si}}^{(1-\gamma_s )}
-			\right)^{\frac{\gamma_s}{1-\gamma_s}} {z_{si}^l}^{(1-\beta_s)}\\
-			& + (1+ \tau_{l_{si}}) w_{si} \frac{1}{\hat{A}_{si}}  {z_{si}^l}^{-\beta_s}\\
+			\text{where} \quad C_{si}  &  = (1+ \tau_{G_{si}}) r^{G}_{si} \frac{1}{\hat{A}_{si}}\left(
+				\alpha_s  + (1-\alpha_s){z^k_{si}}^{-\frac{\gamma_s-1}{\gamma_s}}
+				\right)^{\frac{\gamma_s}{1-\gamma_s}} {z_{si}^l}^{(\beta_s-1)}\\
+			& + (1+ \tau_{B_{si}})r^{B}_{si}\frac{1}{\hat{A}_{si}} \left(\alpha_s {z^k_{si}}^{\frac{\gamma_s -1}{\gamma_s}} + (1-\alpha_s)
+			\right)^{\frac{\gamma_s}{1-\gamma_s}} {z_{si}^l}^{(\beta_s-1)}\\
+			& + (1+ \tau_{l_{si}}) w_{si} \frac{1}{\hat{A}_{si}}  {z_{si}^l}^{\beta_s}\\
 			 & + \tau_{E} \frac{\tilde{A}_{si}}{\hat{A}_{si}}(\frac{\phi_{si}}{z^{l}_{si}})^{\theta_s} {z^{l}_{si}}^{\beta_s}
 		\end{split}
 	\end{equation*}

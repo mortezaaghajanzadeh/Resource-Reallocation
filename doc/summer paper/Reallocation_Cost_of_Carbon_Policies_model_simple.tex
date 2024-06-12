@@ -51,43 +51,48 @@
     \begin{equation}
         {\frac{G_{si}}{B_{si}} = {z_{si}^k}} {=  \left(
             \frac{\alpha_s}{1-\alpha_s} \frac{(1+{\tau_s^B})r_{si} + {\tau_s^E}\tilde{A}}{(1+{\tau_s^G})r_{si}}
-        \right) ^{\frac{1}{\gamma_s}}}
+        \right) ^{{\gamma_s}}}
     \end{equation}
 
     \begin{equation}
         {\frac{L_{si}}{\hat{K}_{si}} = {z_{si}^l}}
-        { = \frac{1-\beta}{\beta}\frac{1}{\alpha_s}\left(
-            \alpha_s + (1-\alpha_s) {{z_{si}^k}}^{1-\gamma_s}
-        \right)^{\frac{1}{1-\gamma_s}} \frac{(1+{\tau_s^G})r_{si}}{(1+{\tau_s^W})w_{si}}}
+        { = \frac{1-\beta}{\beta}\frac{1}{\alpha}\left(\alpha_s  + (1-\alpha_s){z^k_{si}}^{-\frac{\gamma_s-1}{\gamma_s}}\right)^{\frac{1}{\gamma_s-1}} \frac{(1+{\tau_s^G})r_{si}}{(1+{\tau_s^W})w_{si}}}
     \end{equation}
   
 
     \item Let's define the use the optimal ratios (\input{model_elements/optimal ratio.tex})
     
+    \begin{equation}
+        \begin{split}
+            \hat{K}_{si} &= \input{model_elements/optimal level of K based on B.tex}\\
+            & = \input{model_elements/optimal level of K based on G.tex}
+        \end{split}
+        \label{eq:optimal level of K}
+    \end{equation}
     \item Optimal capital level for given output is (see appendix \ref{Ap:optimal level for given output} for proof):
     \input{model_elements/optimal levels.tex}
 
     \item The emission level for given output is (see appendix \ref{Ap:emission optimal level} for proof):
     \begin{equation}
         {E_{si} = \frac{\tilde{A}_{si}}{\hat{A}_{si}}\left(
-            \alpha_s {{z_{si}^k}}^{\gamma_s - 1} + (1-\alpha_s)
-        \right) ^ {\frac{\gamma_s}{1-\gamma_s}} {{z_{si}^l}}^{1 - \beta} \bar{Y}_{si} }
+            \alpha_s {z^k_{si}}^{\frac{\gamma_s -1}{\gamma_s}} + (1-\alpha_s)
+        \right) ^ {\frac{\gamma_s}{1-\gamma_s}} {{z_{si}^l}}^{\beta_s-1} \bar{Y}_{si} }
         {= {\psi_{si}}\bar{Y}_{si}}
     \end{equation}
     
     \item The cost of production is (see appendix \ref{Ap:cost minimization function} for details of the definition):
     \input{model_elements/cost minimization funtion.tex}
-    
+ 
     \item The optimal price level is (see appendix \ref{Ap:firm_price} for proof):
     \input{model_elements/optimal price level.tex}
     \begin{equation*}
          \begin{split}
-            \quad C_{si}  =  \frac{1}{\hat{A}_{si}} {z_{si}^l}^{-\beta_s}  \left[\right. &
-         r^{G}_{si}(\alpha_s {z_{si}^k}^{(\gamma_s-1)} + (1-\alpha_s))
-			^{\frac{\gamma_s}{1-\gamma_s}} {z_{si}^l} \\
+            \quad C_{si}  =  \frac{1}{\hat{A}_{si}} {z_{si}^l}^{\beta_s}  \left[\right. &
+         r^{G}_{si}( \alpha_s  + (1-\alpha_s){z^k_{si}}^{-\frac{\gamma_s-1}{\gamma_s}})
+			^{\frac{\gamma_s}{1-\gamma_s}} {z_{si}^l}^{-1} \\
             + & (r^{B}_{si} + \tau_{E}\tilde{A}_{si})(
-				\alpha_s  + (1-\alpha_s){z^k_{si}}^{(1-\gamma_s )}
-			)^{\frac{\gamma_s}{1-\gamma_s}} {z_{si}^l}\\
+				\alpha_s {z^k_{si}}^{\frac{\gamma_s -1}{\gamma_s}} + (1-\alpha_s)
+			)^{\frac{\gamma_s}{1-\gamma_s}} {z_{si}^l}^{-1}\\
             + & w_{si} \left.\right]
          \end{split}
 	\end{equation*}
@@ -99,7 +104,7 @@
     \end{equation}
     \item The optimal labor level is:
     \begin{equation}
-        L_{si} = \frac{\kappa_s}{\hat{A}_{si}P_{si} ^{\sigma_s}}  {z_{si}^l}^{-\beta_s}
+        L_{si} = \frac{\kappa_s}{\hat{A}_{si}P_{si} ^{\sigma_s}}  {z_{si}^l}^{\beta_s}
     \end{equation}
 \end{itemize}
 
@@ -131,10 +136,10 @@ We need to find an expression for the technologies ($\hat{A}_{si}$ and $\tilde{A
     \item 
     \begin{equation*}
         \begin{split}
-            \ln z_k =& \frac{1}{\gamma} (
-            \ln \frac{\alpha}{1-\alpha} + \ln ({r^B + \tau_E\tilde{A}}) - \ln {r^G} ) =  \frac{1}{\gamma} (\ln \frac{\alpha}{1-\alpha} - \ln {r^G}) + \frac{1}{\gamma} \ln ({r^B + \tau_E\tilde{A}})\\
+            \ln z_k =& {\gamma} (
+            \ln \frac{\alpha}{1-\alpha} + \ln ({r^B + \tau_E\tilde{A}}) - \ln {r^G} ) =  {\gamma} (\ln \frac{\alpha}{1-\alpha} - \ln {r^G}) + {\gamma} \ln ({r^B + \tau_E\tilde{A}})\\
             \\
-            \Rightarrow & \frac{\partial z_k/\partial \tau_E }{z_k} = \frac{1}{\gamma} \frac{\tilde{A}}{r^B + \tau_E\tilde{A}}\\
+            \Rightarrow & \frac{\partial z_k/\partial \tau_E }{z_k} = {\gamma} \frac{\tilde{A}}{r^B + \tau_E\tilde{A}}\\
         \end{split}
     \end{equation*}
 
@@ -147,9 +152,12 @@ We need to find an expression for the technologies ($\hat{A}_{si}$ and $\tilde{A
 
     \item 
     \begin{equation*}
+        % (\alpha_s  + (1-\alpha_s){z^k_{si}}^{-\frac{\gamma_s-1}{\gamma_s}})^{\frac{\gamma_s}{\gamma_s-1}}
         \begin{split}
-            \ln z_l =& \ln \frac{1-\beta}{\beta} - \ln {\alpha} + \frac{1}{1-\gamma} \ln (\alpha + (1-\alpha) {{z_k}}^{1-\gamma}) + \ln r^G - \ln W\\
-            \Rightarrow & \frac{\partial z_l/\partial \tau_E }{z_l} =  \frac{(1-\alpha)z_k^{-\gamma}}{\alpha + (1-\alpha) {{z_k}}^{1-\gamma}}\frac{\partial z_k}{\partial \tau_E} = \frac{\tilde{A}/\gamma}{r^B + \tau_E\tilde{A}}\frac{1}{\frac{\alpha}{1-\alpha}{{z_k}}^{\gamma-1} + 1}
+            \ln z_l =& \ln \frac{1-\beta}{\beta} - \ln {\alpha} +\frac{1}{\gamma_s-1} \ln (\alpha_s  + (1-\alpha_s){z^k_{si}}^{-\frac{\gamma_s-1}{\gamma_s}}) + \ln r^G - \ln W\\
+            \Rightarrow & \frac{\partial z_l/\partial \tau_E }{z_l} =  \frac{\frac{-1}{\gamma}(1-\alpha)z_k^{\frac{1-2\gamma}{\gamma}}}{\alpha_s  + (1-\alpha_s){z^k_{si}}^{-\frac{\gamma_s-1}{\gamma_s}}}
+            \frac{\partial z_k}{\partial \tau_E} = 
+            \frac{-1}{\frac{\alpha_s}{1-\alpha_s}{z^k_{si}}^{\frac{2\gamma_s-1}{\gamma_s}}  + (1-\alpha_s)}\frac{\tilde{A}}{r^B + \tau_E\tilde{A}}
         \end{split}
     \end{equation*}
 
@@ -168,16 +176,27 @@ We need to find an expression for the technologies ($\hat{A}_{si}$ and $\tilde{A
                 & =  \frac{- \sigma_s}{p_i} \frac{\partial C_i}{\partial\tau_E} 
         \end{split}
     \end{equation*}
+    \begin{equation*}
+        \begin{split}
+           \quad C_{si}  =  \frac{1}{\hat{A}_{si}} {z_{si}^l}^{\beta_s}  \left[\right. &
+        r^{G}_{si}( \alpha_s  + (1-\alpha_s){z^k_{si}}^{-\frac{\gamma_s-1}{\gamma_s}})
+           ^{\frac{\gamma_s}{1-\gamma_s}} {z_{si}^l}^{-1} \\
+           + & (r^{B}_{si} + \tau_{E}\tilde{A}_{si})(
+               \alpha_s {z^k_{si}}^{\frac{\gamma_s -1}{\gamma_s}} + (1-\alpha_s)
+           )^{\frac{\gamma_s}{1-\gamma_s}} {z_{si}^l}^{-1}\\
+           + & w_{si} \left.\right]
+        \end{split}
+   \end{equation*}
     Let's define $X_{it}$ as:
     \begin{equation*}
-        X_{it} =  r^{G}_{si}(\alpha_s {z_{si}^k}^{(\gamma_s-1)} + (1-\alpha_s))
-            ^{\frac{\gamma_s}{1-\gamma_s}} {z_{si}^l} + (r^{B}_{si} + \tau_{E}\tilde{A}_{si})(
-                \alpha_s  + (1-\alpha_s){z^k_{si}}^{(1-\gamma_s )}
-            )^{\frac{\gamma_s}{1-\gamma_s}} {z_{si}^l} + w_{si} 
+        X_{it} =  r^{G}_{si}( \alpha_s  + (1-\alpha_s){z^k_{si}}^{-\frac{\gamma_s-1}{\gamma_s}})
+        ^{\frac{\gamma_s}{1-\gamma_s}} {z_{si}^l}^{-1} + (r^{B}_{si} + \tau_{E}\tilde{A}_{si})(
+            \alpha_s {z^k_{si}}^{\frac{\gamma_s -1}{\gamma_s}} + (1-\alpha_s)
+        )^{\frac{\gamma_s}{1-\gamma_s}} {z_{si}^l}^{-1} + w_{si} 
     \end{equation*}
     \begin{equation*}
         \begin{split}
-            \Rightarrow \ln C_i & =  -\ln \hat{A}_{si} - \beta_s \ln z_l +  \ln X_{it} \\
+            \Rightarrow \ln C_i & =  -\ln \hat{A}_{si} + \beta_s \ln z_l +  \ln X_{it} \\
             \Rightarrow \frac{\partial C_i/\partial\tau_E}{C_i} & = -\beta_s \frac{\partial z_l/\partial\tau_E}{z_l} + \frac{\partial X_{it}/\partial\tau_E }{X_{it}}\\
         \end{split}
     \end{equation*}
@@ -277,7 +296,41 @@ And then we can derive the marginal benefit of the brown capital:
 \input{model_elements/marginal benefit B proof.tex}
 And finally, we can derive the marginal benefit of labor:
 \input{model_elements/marginal benefit L proof.tex}
+
+\subsection*{Additional Derivatives}
+\begin{equation*}
+    Y = \hat{A} K^{\beta} L^{1-\beta}
+\end{equation*}
+\begin{equation*}
+    \frac{\partial Y}{\partial G}   = \beta\frac{Y}{K} \frac{\partial K}{\partial G} = \beta\frac{Y}{K} \frac{\gamma_s}{\gamma_s-1} K ^{\frac{1}{\gamma_s}}\alpha \frac{\gamma_s-1}{\gamma_s}G^{\frac{-1}{\gamma_s}}
+\end{equation*}
+\begin{equation*}
+    \frac{\partial Y}{\partial B} = \beta\frac{Y}{K} \frac{\partial K}{\partial B} = \beta\frac{Y}{K} \frac{\gamma_s}{\gamma_s-1} K ^{\frac{1}{\gamma_s}}(1-\alpha) \frac{\gamma_s-1}{\gamma_s}B^{\frac{-1}{\gamma_s}}
+\end{equation*}
+\begin{equation*}
+    \begin{split}
+        F.O.C &\Rightarrow \lambda = \frac{\circ \alpha G^{\frac{-1}{\gamma_s} }}{r^G} = \frac{\circ (1-\alpha) B^{\frac{-1}{\gamma_s} }}{r^B}\\
+        & \Rightarrow \frac{G}{B} = \left(\frac{\alpha}{1-\alpha}\frac{r^B}{r^G}\right)^{\gamma_s}
+    \end{split}
+\end{equation*}
+
+then given $z_k$ and using equations from \ref{eq:optimal level of K}, I have:
+\begin{equation*}
+    \frac{\partial Y}{\partial L} = (1-\beta)\frac{Y}{L} 
+\end{equation*}
+\begin{equation*}
+    \begin{split}
+        F.O.C &\Rightarrow \lambda = \frac{\beta\frac{Y}{K} \frac{\gamma_s}{\gamma_s-1} (K/G) ^{\frac{1}{\gamma_s}}\alpha \frac{\gamma_s-1}{\gamma_s}}{r^G} = \frac{(1-\beta)\frac{Y}{L}}{W}\\
+        &  \begin{split}
+            \Rightarrow\frac{L}{K} & = \frac{1-\beta}{\beta} \frac{1}{\alpha} (K/G) ^{\frac{1}{\gamma_s}} \frac{r^G}{W}\\
+            & =  \frac{1-\beta}{\beta} \frac{1}{\alpha}(\alpha_s + (1-\alpha_s) z_k^{-\frac{\gamma_s-1}{\gamma_s}})^{\frac{1}{\gamma_s-1}} \frac{r^G}{W}
+        \end{split}
+    \end{split}
+\end{equation*}
+
 \subsection*{}
 \bibliographystyle{aea}
 \bibliography{literature}
+
+
 \end{document}
