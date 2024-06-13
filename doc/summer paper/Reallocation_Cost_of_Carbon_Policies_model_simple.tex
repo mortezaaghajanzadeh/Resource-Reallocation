@@ -154,17 +154,13 @@ We need to find an expression for the technologies ($\hat{A}_{si}$ and $\tilde{A
     \begin{equation*}
         % (\alpha_s  + (1-\alpha_s){z^k_{si}}^{-\frac{\gamma_s-1}{\gamma_s}})^{\frac{\gamma_s}{\gamma_s-1}}
         \begin{split}
-            \ln z_l =& \ln \frac{1-\beta}{\beta} - \ln {\alpha} +\frac{1}{\gamma_s-1} \ln (\alpha_s  + (1-\alpha_s){z^k_{si}}^{-\frac{\gamma_s-1}{\gamma_s}}) + \ln r^G - \ln W\\
-            \Rightarrow & \frac{\partial z_l/\partial \tau_E }{z_l} =  \frac{\frac{-1}{\gamma}(1-\alpha)z_k^{\frac{1-2\gamma}{\gamma}}\frac{-(\gamma-1)}{\gamma}}{\alpha_s  + (1-\alpha_s){z^k_{si}}^{-\frac{\gamma_s-1}{\gamma_s}}}
-            \frac{\partial z_k}{\partial \tau_E} = 
-            \frac{1}{\frac{\alpha_s}{1-\alpha_s}{z^k_{si}}^{\frac{2\gamma_s-1}{\gamma_s}}  + z^k_{si}}\frac{1}{\gamma}\frac{\partial z_k}{\partial \tau_E}\\
-            & =  
-            \frac{1}{z^k_{si}(\frac{\alpha_s}{1-\alpha_s}{z^k_{si}}^{\frac{\gamma_s-1}{\gamma_s}}  + 1)}\frac{1}{\gamma}\frac{\partial z_k}{\partial \tau_E} = \frac{1-\alpha}{{\alpha z^k_{si}}^{\frac{\gamma_s-1}{\gamma_s}} + (1-\alpha)}\frac{\tilde{A}}{r^B + \tau_E\tilde{A}}
+            \ln z_l =& \ln \frac{1-\beta}{\beta} - \ln {\alpha} +\frac{1}{\gamma_s} \ln (\frac{G}{K}) + \ln r^G - \ln W\\
+            \Rightarrow & \frac{\partial z_l/\partial \tau_E }{z_l} = \frac{1}{\gamma_s} \frac{\partial \ln (\frac{G}{K}) }{ \partial \tau_E}  =  \frac{1}{\gamma_s}\frac{\gamma(1-\alpha)}{\alpha z_k^{\frac{\gamma-1}{\gamma}}+(1-\alpha)} \cdot \frac{\tilde{A}}{r^\beta+\tau_E \tilde{A}} \\
+            & 
+            \Rightarrow \frac{\partial z_l/\partial \tau_E }{z_l} = \frac{1-\alpha}{{\alpha z^k_{si}}^{\frac{\gamma_s-1}{\gamma_s}} + (1-\alpha)}\frac{\tilde{A}}{r^B + \tau_E\tilde{A}} >0
         \end{split}
     \end{equation*}
-    \begin{equation*}
-        \Rightarrow \frac{\partial z_l/\partial \tau_E }{z_l} = \frac{1-\alpha}{{\alpha z^k_{si}}^{\frac{\gamma_s-1}{\gamma_s}} + (1-\alpha)}\frac{\tilde{A}}{r^B + \tau_E\tilde{A}} >0
-    \end{equation*}
+
 
     Regression:
     \begin{equation*}
@@ -178,53 +174,88 @@ We need to find an expression for the technologies ($\hat{A}_{si}$ and $\tilde{A
         \begin{split}
             \Rightarrow  \frac{\partial P_iY_i/\partial\tau_E}{P_iY_i} & = (1-\sigma_s) \frac{\partial p_i/\partial\tau_E}{p_i} \\
              &  = (1-\sigma_s) \frac{\partial \frac{\sigma_s}{\sigma_s - 1} C_{si}/\partial\tau_E}{p_i}\\
-                & =  \frac{- \sigma_s}{p_i} \frac{\partial C_i}{\partial\tau_E} 
+                & =  \frac{- \sigma_s}{p_i} \frac{\partial }{\partial\tau_E} \frac{1}{\hat{A}_{si}} \left[
+                    \underbrace{r^G (\frac{G}{K}) z_L^{\beta-1} 
+                    + r^B (\frac{B}{K}) z_L^{\beta-1}}_{r = r^G (\frac{G}{K}) + r^B (\frac{B}{K})}
+                    + w z_L^{\beta}
+                   \right]\\
+                & = \frac{- \sigma_s}{\hat{A}_{si}p_i} \frac{\partial }{\partial\tau_E} z_L^{\beta}(
+                    \frac{r}{z_l} + w
+                )\\
+                & = \frac{- \sigma_s}{\hat{A}_{si}p_i} \left[
+                    (\frac{r}{z_l} + w)\beta z_L^{\beta-1} \frac{\partial z_L}{\partial \tau_E} + z_L^{\beta}(
+                        \dfrac{\partial r / \partial \tau_E z_l - r\partial z_l / \partial \tau_E}{z_l^2}
+                    )
+                \right]\\
+                & = \frac{- \sigma_s}{\hat{A}_{si}p_i} z_L^{\beta} \left[
+                    (\frac{r}{z_l} + w)\beta\frac{ \partial z_l / \partial \tau_E}{z_l} 
+                    + \frac{\partial r / \partial \tau_E}{z_l} 
+                    -\frac{r}{z_l} \frac{ \partial z_l / \partial \tau_E}{z_l}
+                \right]\\
+                & = \frac{- \sigma_s}{\hat{A}_{si}p_i} z_L^{\beta} \left[
+                    ((\frac{r}{z_l} + w)\beta-\frac{r}{z_l} )\frac{ \partial z_l / \partial \tau_E}{z_l} 
+                    + \frac{\partial r / \partial \tau_E}{z_l}
+                \right]  \\
+                & =  \frac{- \sigma_s}{\hat{A}_{si}p_i} z_L^{\beta} \left[
+                    ((\frac{r}{z_l} + w)\beta-\frac{r}{z_l} )\frac{ \partial z_l / \partial \tau_E}{z_l} 
+                    + r^G (\frac{G}{K})\frac{ \partial \ln (\frac{G}{K}) / \partial \tau_E}{z_l}
+                    + r^B (\frac{B}{K})\frac{ \partial \ln (\frac{B}{K}) / \partial \tau_E}{z_l}
+                \right]
         \end{split}
     \end{equation*}
-    \begin{equation*}
-        \begin{split}
-           \quad C_{si}  =  \frac{1}{\hat{A}_{si}} {z_{si}^l}^{\beta_s}  \left[\right. &
-        r^{G}_{si}( \alpha_s  + (1-\alpha_s){z^k_{si}}^{-\frac{\gamma_s-1}{\gamma_s}})
-           ^{\frac{\gamma_s}{1-\gamma_s}} {z_{si}^l}^{-1} \\
-           + & (r^{B}_{si} + \tau_{E}\tilde{A}_{si})(
-               \alpha_s {z^k_{si}}^{\frac{\gamma_s -1}{\gamma_s}} + (1-\alpha_s)
-           )^{\frac{\gamma_s}{1-\gamma_s}} {z_{si}^l}^{-1}\\
-           + & w_{si} \left.\right]
-        \end{split}
-   \end{equation*}
-    Let's define $X_{it}$ as:
-    \begin{equation*}
-        X_{it} =  r^{G}_{si}( \alpha_s  + (1-\alpha_s){z^k_{si}}^{-\frac{\gamma_s-1}{\gamma_s}})
-        ^{\frac{\gamma_s}{1-\gamma_s}} {z_{si}^l}^{-1} + (r^{B}_{si} + \tau_{E}\tilde{A}_{si})(
-            \alpha_s {z^k_{si}}^{\frac{\gamma_s -1}{\gamma_s}} + (1-\alpha_s)
-        )^{\frac{\gamma_s}{1-\gamma_s}} {z_{si}^l}^{-1} + w_{si} 
-    \end{equation*}
-    \begin{equation*}
-        \begin{split}
-            \Rightarrow \ln C_i & =  -\ln \hat{A}_{si} + \beta_s \ln z_l +  \ln X_{it} \\
-            \Rightarrow \frac{\partial C_i/\partial\tau_E}{C_i} & = -\beta_s \frac{\partial z_l/\partial\tau_E}{z_l} + \frac{\partial X_{it}/\partial\tau_E }{X_{it}}\\
-        \end{split}
-    \end{equation*}
-    \begin{equation*}
-        \begin{split}
-            \frac{\partial X_{it}}{\partial\tau_E } & =  \frac{\partial }{\partial\tau_E } \left[
-                (r^{G}_{si}\square^{\frac{\gamma_s}{1-\gamma_s}}  + (r^{B}_{si} + \tau_{E}\tilde{A}_{si})\circ^{\frac{\gamma_s}{1-\gamma_s}} ){z_{si}^l} + w_{si} \right]\\
-                & = (X_{it} - w_{si})\frac{\partial z_l}{\partial\tau_E} + {\frac{\gamma_s}{1-\gamma_s}}(r^G \square^{\frac{2\gamma_s-1}{1-\gamma_s}} \frac{\partial \square}{\partial\tau_E } + (r^B + \tau_{E}\tilde{A})\frac{\partial \circ}{\partial\tau_E } + \tilde{A}\circ){z_{si}^l} \\
-        \end{split}
-    \end{equation*}
+    
+    \begin{align*}
+        &= \frac{- \sigma_s}{\hat{A}_{si}p_i} z_L^{\beta} \left[
+            ((\frac{r}{z_l} + w)\beta-\frac{r}{z_l} )\frac{1-\alpha}{\triangle}\dfrac{\tilde{A}}{r^\beta+\tau_E \tilde{A}}
+            + \gamma \frac{\beta}{1-\beta}\frac{\alpha(1-\alpha)}{\circ\triangle}\dfrac{\tilde{A}}{r^\beta+\tau_E \tilde{A}} 
+            - \gamma \frac{\beta}{1-\beta}\frac{\alpha(1-\alpha)}{\circ\triangle}\dfrac{\tilde{A}}{r^\beta+\tau_E \tilde{A}}
+        \right]\\
+        &= \frac{- \sigma_s}{\hat{A}_{si}p_i} z_L^{\beta}\dfrac{\tilde{A}}{r^\beta+\tau_E \tilde{A}}
+        ((\frac{r}{z_l} + w)\beta-\frac{r}{z_l} )\frac{1-\alpha}{\triangle}
+    \end{align*}
+    
  
     \item 
-    \begin{equation*}
-        \begin{split}
-            & \frac{E}{\nu_{s}(PY)^{\frac{\sigma_s}{\sigma_s - 1}}}  = \frac{\tilde{A}}{\hat{A}}\left(
-                \alpha_s {{z^k}}^{\gamma_s - 1} + (1-\alpha_s)
-            \right) ^ {\frac{\gamma_s}{1-\gamma_s}} {{z_l}}^{1 - \beta} , \quad \epsilon \equiv  \frac{E}{PY}\\
-            \Rightarrow & \ln \epsilon =  \ln \frac{\tilde{A}}{\hat{A}} + \frac{\gamma_s}{1-\gamma_s} \ln \left(
-                \alpha_s {{z^k}}^{\gamma_s - 1} + (1-\alpha_s)
-            \right) + (1-\beta) \ln {{z_l}} + \frac{1}{\sigma -1} \ln PY + \ln \nu_{s} \\
-            \Rightarrow & \frac{\partial \epsilon/\partial \tau_E}{\epsilon} =  -\frac{\gamma_s}{\alpha_s {{z^k}}^{\gamma_s - 1} + (1-\alpha_s)} {\alpha_s z_k^{\gamma_s}} \frac{\partial z_k}{\partial \tau_E} + \frac{1-\beta}{z_l} \frac{\partial z_l}{\partial \tau_E} + \frac{1}{(\sigma -1)PY} \frac{\partial PY}{\partial \tau_E}
-        \end{split}
-    \end{equation*}
+
+    \begin{align*}
+        & \frac{E}{\nu_{s}(PY)^{\frac{\sigma_s}{\sigma_s - 1}}}  = \frac{\tilde{A}}{\hat{A}}(\frac{B}{K}) {{z_l}}^{\beta-1} , \quad \epsilon \equiv  \frac{E}{PY}, \quad c \equiv \frac{\tau_E E}{PY}\\
+        \Rightarrow & \ln \epsilon =  \ln \frac{\tilde{A}}{\hat{A}} + \ln(\frac{B}{K}) + (\beta-1) \ln {{z_l}} + \frac{1}{\sigma -1} \ln PY + \ln \nu_{s} \\
+        \Rightarrow & \ln c = \ln \tau_E + \ln \frac{\tilde{A}}{\hat{A}} + \ln(\frac{B}{K}) + (\beta-1) \ln {{z_l}} + \frac{1}{\sigma -1} \ln PY + \ln \nu_{s}
+        \\
+        \Rightarrow & \frac{\partial \ln \epsilon}{\partial \tau_E} =   \frac{\partial \ln \frac{B}{K} }{\partial \tau_E} 
+        + (\beta - 1) \frac{\partial \ln z_l }{\partial \tau_E} + \frac{1}{\sigma -1} \frac{\partial\ln PY }{\partial \tau_E}\\
+        \Rightarrow & \frac{\partial \ln \epsilon}{\partial \tau_E} =   \frac{\partial \ln \frac{B}{K} }{\partial \tau_E}
+        + (\beta - 1) \frac{\partial \ln z_l }{\partial \tau_E}  - \frac{\sigma}{\sigma -1}\frac{z_L^{\beta}}{\hat{A}_{si}p_i} \dfrac{\tilde{A}}{r^\beta+\tau_E \tilde{A}}
+        ((\frac{r}{z_l} + w)\beta-\frac{r}{z_l} )\frac{1-\alpha}{\triangle}
+    \end{align*}
+    \begin{align*}
+        \frac{\partial \ln \epsilon}{\partial \tau_E}  &=   - \frac{\gamma\alpha}{\circ} \cdot \frac{\tilde{A}}{r^\beta+\tau_E \tilde{A}}	
+        + (\beta-1) \frac{1-\alpha}{\triangle}\frac{\tilde{A}}{r^B + \tau_E\tilde{A}}
+        - \frac{\sigma}{\sigma -1}\frac{z_L^{\beta}}{\hat{A}_{si}p_i} \dfrac{\tilde{A}}{r^\beta+\tau_E \tilde{A}}
+        ((\frac{r}{z_l} + w)\beta-\frac{r}{z_l} )\frac{1-\alpha}{\triangle}\\
+        &= \frac{\tilde{A}}{r^B + \tau_E\tilde{A}}\left[
+            -\frac{\gamma\alpha}{\circ} 
+            + (\beta-1) \frac{1-\alpha}{\triangle} 
+            - \frac{\sigma}{\sigma -1}\frac{z_L^{\beta}}{{\hat{A}_{si}}p_i} {((\frac{r}{z_l} + w)\beta-\frac{r}{z_l} )}\frac{1-\alpha}{\triangle}
+        \right]\\
+        &= \frac{\tilde{A}}{r^B + \tau_E\tilde{A}}\left[
+            -\frac{\gamma\alpha}{\circ} 
+            + (\beta-1) \frac{1-\alpha}{\triangle} 
+            - \dfrac{1}{\frac{r}{z_l} + w} {((\frac{r}{z_l} + w)\beta-\frac{r}{z_l} )}\frac{1-\alpha}{\triangle}
+        \right]\\
+        & = \frac{\tilde{A}}{r^B + \tau_E\tilde{A}}\left[
+            -\frac{\gamma\alpha}{\circ} 
+            - (\dfrac{w}{\frac{r}{z_l} + w})\frac{1-\alpha}{\triangle}
+        \right]
+    \end{align*}
+
+    \begin{eqnarray*}
+        &\ln c = \ln \tau_E + \ln \epsilon \Rightarrow \dfrac{\partial \ln c}{\partial \tau_E} = \dfrac{1}{\tau_E} + \dfrac{\partial \ln \epsilon}{\partial \tau_E}\\
+        & \Rightarrow \dfrac{\partial \ln \epsilon}{\partial \ln c} = \dfrac{\partial \ln \epsilon / \partial \tau_E}{\partial \ln c/\partial \tau_E} = \dfrac{{\partial \ln \epsilon/\partial \tau_E}}{\dfrac{1}{\tau_E} + {\partial \ln \epsilon/\partial \tau_E}}
+    \end{eqnarray*}
+  
+
+
     Regression:
     \begin{equation*}
         \begin{split}
@@ -243,6 +274,61 @@ We need to find an expression for the technologies ($\hat{A}_{si}$ and $\tilde{A
 \end{enumerate}
 
 \clearpage
+
+
+\subsection*{Additional Derivatives}
+\begin{equation*}
+    Y = \hat{A} K^{\beta} L^{1-\beta}
+\end{equation*}
+\begin{equation*}
+    \frac{\partial Y}{\partial G}   = \beta\frac{Y}{K} \frac{\partial K}{\partial G} = \beta\frac{Y}{K} \frac{\gamma_s}{\gamma_s-1} K ^{\frac{1}{\gamma_s}}\alpha \frac{\gamma_s-1}{\gamma_s}G^{\frac{-1}{\gamma_s}}
+\end{equation*}
+\begin{equation*}
+    \frac{\partial Y}{\partial B} = \beta\frac{Y}{K} \frac{\partial K}{\partial B} = \beta\frac{Y}{K} \frac{\gamma_s}{\gamma_s-1} K ^{\frac{1}{\gamma_s}}(1-\alpha) \frac{\gamma_s-1}{\gamma_s}B^{\frac{-1}{\gamma_s}}
+\end{equation*}
+\begin{equation*}
+    \begin{split}
+        F.O.C &\Rightarrow \lambda = \frac{\circ \alpha G^{\frac{-1}{\gamma_s} }}{r^G} = \frac{\circ (1-\alpha) B^{\frac{-1}{\gamma_s} }}{r^B}\\
+        & \Rightarrow \frac{G}{B} = \left(\frac{\alpha}{1-\alpha}\frac{r^B}{r^G}\right)^{\gamma_s}
+    \end{split}
+\end{equation*}
+
+then given $z_k$ and using equations from \ref{eq:optimal level of K}, I have:
+\begin{equation*}
+    \frac{\partial Y}{\partial L} = (1-\beta)\frac{Y}{L} 
+\end{equation*}
+\begin{equation*}
+    \begin{split}
+        F.O.C &\Rightarrow \lambda = \frac{\beta\frac{Y}{K} \frac{\gamma_s}{\gamma_s-1} (K/G) ^{\frac{1}{\gamma_s}}\alpha \frac{\gamma_s-1}{\gamma_s}}{r^G} = \frac{(1-\beta)\frac{Y}{L}}{W}\\
+        &  \begin{split}
+            \Rightarrow\frac{L}{K} & = \frac{1-\beta}{\beta} \frac{1}{\alpha} (K/G) ^{\frac{1}{\gamma_s}} \frac{r^G}{W}\\
+            & =  \frac{1-\beta}{\beta} \frac{1}{\alpha}(\alpha_s + (1-\alpha_s) z_k^{-\frac{\gamma_s-1}{\gamma_s}})^{\frac{1}{\gamma_s-1}} \frac{r^G}{W}
+        \end{split}
+    \end{split}
+\end{equation*}
+
+\begin{equation*}
+        \frac{\partial \ln \left(\frac{G}{k}\right)}{\partial \tau_E}=\frac{\gamma(1-\alpha)}{\alpha z_k^{\frac{\gamma-1}{\gamma}}+(1-\alpha)} \cdot \frac{\tilde{A}}{r^\beta+\tau_E \tilde{A}}	
+\end{equation*}$\blacksquare$
+\begin{equation*}
+    \frac{\partial \ln \left(\frac{B}{k}\right)}{\partial \tau_E} = \frac{-\gamma\alpha}{\alpha +(1-\alpha)z_k^{-\frac{\gamma-1}{\gamma}}} \cdot \frac{\tilde{A}}{r^\beta+\tau_E \tilde{A}}	
+\end{equation*}$\blacksquare$
+\begin{eqnarray*}
+    z_l^{-1}r^G (\frac{G}{K})\dfrac{ \partial \ln (\frac{G}{K}) }{\partial \tau_E} \\
+   =\frac{\beta}{1-\beta}{\alpha} (\frac{G}{K})^{\frac{\gamma-1}{\gamma}}{w} \dfrac{ \partial \ln (\frac{G}{K}) }{\partial \tau_E} \\
+   =\frac{\beta}{1-\beta}{\alpha}w \frac{1}{\circ}\dfrac{\gamma (1-\alpha)}{\triangle}\dfrac{\tilde{A}}{r^\beta+\tau_E \tilde{A}}\\
+   = \gamma \frac{\beta}{1-\beta}\frac{\alpha(1-\alpha)}{\circ\triangle}w\dfrac{\tilde{A}}{r^\beta+\tau_E \tilde{A}} 
+\end{eqnarray*}$\blacksquare$	
+\begin{eqnarray*}
+    r^B (\frac{B}{K})z_l^{-1}\dfrac{ \partial \ln (\frac{B}{K}) }{\partial \tau_E} \\
+    = \frac{\beta}{1-\beta}{(1-\alpha)}(\frac{B}{K})^{\frac{\gamma-1}{\gamma}}w \dfrac{ \partial \ln (\frac{B}{K}) }{\partial \tau_E} \\ 
+    = \frac{\beta}{1-\beta}{(1-\alpha)}w  \frac{1}{\triangle}\dfrac{-\gamma \alpha}{\circ}\dfrac{\tilde{A}}{r^\beta+\tau_E \tilde{A}}\\
+    = -\gamma \frac{\beta}{1-\beta}\frac{\alpha(1-\alpha)}{\circ\triangle}w\dfrac{\tilde{A}}{r^\beta+\tau_E \tilde{A}}
+\end{eqnarray*} $\blacksquare$
+\begin{eqnarray*}
+    &\dfrac{\sigma}{\sigma -1}\dfrac{z_L^{\beta}}{{\hat{A}_{si}}p_i} = \dfrac{\sigma}{\sigma -1} \dfrac{z_L^{\beta}}{\hat{A}_{si}\frac{\sigma -1}{\sigma} C_{si}}\\
+    & = \dfrac{1}{\frac{r}{z_l} + w}
+\end{eqnarray*}
 
 \section{Definitions and Proofs} 
 \subsection{Optimal level for given output} \label{Ap:optimal level for given output}
@@ -301,37 +387,6 @@ And then we can derive the marginal benefit of the brown capital:
 \input{model_elements/marginal benefit B proof.tex}
 And finally, we can derive the marginal benefit of labor:
 \input{model_elements/marginal benefit L proof.tex}
-
-\subsection*{Additional Derivatives}
-\begin{equation*}
-    Y = \hat{A} K^{\beta} L^{1-\beta}
-\end{equation*}
-\begin{equation*}
-    \frac{\partial Y}{\partial G}   = \beta\frac{Y}{K} \frac{\partial K}{\partial G} = \beta\frac{Y}{K} \frac{\gamma_s}{\gamma_s-1} K ^{\frac{1}{\gamma_s}}\alpha \frac{\gamma_s-1}{\gamma_s}G^{\frac{-1}{\gamma_s}}
-\end{equation*}
-\begin{equation*}
-    \frac{\partial Y}{\partial B} = \beta\frac{Y}{K} \frac{\partial K}{\partial B} = \beta\frac{Y}{K} \frac{\gamma_s}{\gamma_s-1} K ^{\frac{1}{\gamma_s}}(1-\alpha) \frac{\gamma_s-1}{\gamma_s}B^{\frac{-1}{\gamma_s}}
-\end{equation*}
-\begin{equation*}
-    \begin{split}
-        F.O.C &\Rightarrow \lambda = \frac{\circ \alpha G^{\frac{-1}{\gamma_s} }}{r^G} = \frac{\circ (1-\alpha) B^{\frac{-1}{\gamma_s} }}{r^B}\\
-        & \Rightarrow \frac{G}{B} = \left(\frac{\alpha}{1-\alpha}\frac{r^B}{r^G}\right)^{\gamma_s}
-    \end{split}
-\end{equation*}
-
-then given $z_k$ and using equations from \ref{eq:optimal level of K}, I have:
-\begin{equation*}
-    \frac{\partial Y}{\partial L} = (1-\beta)\frac{Y}{L} 
-\end{equation*}
-\begin{equation*}
-    \begin{split}
-        F.O.C &\Rightarrow \lambda = \frac{\beta\frac{Y}{K} \frac{\gamma_s}{\gamma_s-1} (K/G) ^{\frac{1}{\gamma_s}}\alpha \frac{\gamma_s-1}{\gamma_s}}{r^G} = \frac{(1-\beta)\frac{Y}{L}}{W}\\
-        &  \begin{split}
-            \Rightarrow\frac{L}{K} & = \frac{1-\beta}{\beta} \frac{1}{\alpha} (K/G) ^{\frac{1}{\gamma_s}} \frac{r^G}{W}\\
-            & =  \frac{1-\beta}{\beta} \frac{1}{\alpha}(\alpha_s + (1-\alpha_s) z_k^{-\frac{\gamma_s-1}{\gamma_s}})^{\frac{1}{\gamma_s-1}} \frac{r^G}{W}
-        \end{split}
-    \end{split}
-\end{equation*}
 
 \subsection*{}
 \bibliographystyle{aea}
