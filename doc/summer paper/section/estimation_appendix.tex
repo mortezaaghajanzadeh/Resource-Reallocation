@@ -96,47 +96,7 @@ Finally, Given the identified parameters, I can estimate the $\gamma$ using the 
 
 Given the estimated parameters of the production function, I set the production productivity to match the total revenue in the sector. Then I can estimate the emission inefficiency to match the emission intensity of the sector. The estimated parameters are given in the Table~\ref{tab:estimate_parameters}.
 
-\begin{table}[http]
-    \centering
-    \caption{\quad Parameters to be estimated} \label{tab:estimate_parameters}
-    \vspace*{2mm}
-    \begin{tabular}{@{}cc@{}}
-    \toprule
-    \textbf{Parameter}  & \textbf{Source/Moment}\\
-    \midrule 
-    \multicolumn{2}{c}{Panel A: Estimation} \\
-    \midrule
-    $\alpha_s$ & ${\beta_G}/{\beta_B}$ \\
-    $\beta_s$ & ${\beta_G}/{\beta_L}$\\ 
-    $\sigma_s$ & $WL/PY$\\
-    $\gamma_s$ & ${\beta_{GB}}/{\beta_B\beta_G}$\\
-    $Mean(\log(\hat{A}_{si})) $ & $Mean({L}_{si})$\\
-    $Sd(\log({\hat{A}}))$ & $Sd({L}_{si})$\\
-    $Mean(\log(\tilde{A}_{si})) $ & $Mean({E/PY})$\\
-    $Sd({\log(\tilde{A})})$ & $Sd({E/PY})$\\
-    $Corr(\log(\hat{A}),\log(\tilde{A}))$ & $Corr(PY,E/PY)$\\
-    \midrule
-    \multicolumn{2}{c}{Panel B: Additional Moments} \\
-    \midrule
-    $ \left(
-            \frac{\alpha}{1-\alpha} \frac{r^B + {\tau_E}\tilde{A}}{r^G}
-        \right) ^{\frac{1}{\gamma}}$ & $z_k= G/B$ \\\\
-    $\frac{1-\beta}{\beta}\frac{1}{\alpha}\left(
-        \alpha + (1-\alpha) {{z_k}}^{1-\gamma}
-    \right)^{\frac{1}{1-\gamma}} \frac{r^G}{W}$ & $z_l = L/K$ \\\\
-    $\frac{1}{\gamma} \frac{\tilde{A}}{r^B + \tau_E\tilde{A}} z_k$ & ${\partial z_k/\partial \tau_E }$ \\\\
-    $\frac{\tilde{A}/\gamma}{r^B + \tau_E\tilde{A}}\frac{1}{\frac{\alpha}{1-\alpha}{{z_k}}^{\gamma-1} + 1}{z_l}$ &   $\partial z_l/\partial \tau_E$\\\\
-    - & $\Delta(\frac{E}{PY})/\Delta(\frac{C}{PY}) $ \\
-    \midrule
-    \multicolumn{2}{c}{Panel C: Calibration} \\
-    \midrule
-    $r$ & $5\%$  \\
-    $w$ & $500$ TSEK  \\
-    
-    \bottomrule
-\end{tabular}
-\end{table}
-
+\input{Tables/moment_parameters.tex}
 
 
 

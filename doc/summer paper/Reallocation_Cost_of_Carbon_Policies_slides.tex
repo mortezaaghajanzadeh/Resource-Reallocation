@@ -208,7 +208,7 @@
 		\item Climate Policy Design:
 		\begin{itemize}
 			\item \cite{acemoglu2012competing,acemoglu2016transition,oehmke2023theory}\\
-			Contribution: \textbf{Assess alternative instruments in Emission Intensity / resource reallocation}
+			Contribution: \textbf{Assess alternative instruments in Emission Intensity / resource reallocation trade off}
 		\end{itemize}
 	\end{itemize}
 	
@@ -245,6 +245,9 @@
 
 
 \begin{frame}{Extension}{Production functions}\label{Production_Functions}
+	\begin{itemize}
+		\item Industry $s$, firm $i$:
+	\end{itemize}
 	\begin{equation}
 		Y_{si} = {\only<1>{\textcolor{blue}}{\hat{A}_{si}}\textcolor{red}{\hat{K}_{si}}^{\beta_s} L_{si}^{1-\beta_s}} \only<2->{\quad,\qquad \textcolor{red}{\hat{K} = (
 			\alpha_s G_{si}^{\frac{\gamma_s-1}{\gamma_s}} + (1-\alpha_s) B_{si}^{\frac{\gamma_s-1}{\gamma_s}}
@@ -269,37 +272,14 @@
 
 
 
-
 \begin{frame}{Estimation / Calibration}\label{estimation_result}
 	\begin{itemize}\footnotesize
 		% \item My goal is to estimate the parameters sector by sector for Sweden
 		\item I just reasonably calibrate the model to match the summary statistics of \cite{martinsson2024effect}
 		% \item I will set the $\hat{A} =$  \input{values/A hat estimate} to match the total output in the economy ($\sim 10$ BSEK).
 	\end{itemize}
-	\begin{table}[ht]
-		\centering
-		\resizebox*{0.4\textwidth}{!}{\begin{tabular}{@{}ccc@{}}
-		\toprule
-		\textbf{Parameter} & \textbf{Value} & \textbf{Source/Moment}\\
-		\midrule 
-		\multicolumn{3}{c}{Panel A: Estimated Value} \\
-		\midrule
-		$\gamma$ & \input{values/gamma estimate} & $\Delta(\frac{E}{PY})/\Delta(\frac{C}{PY})$ \\
-		$\tilde{A}$ & \input{values/A tilde estimate} & $ E/PY $\\ 
-		\midrule
-		\multicolumn{3}{c}{Panel B: Inputs} \\
-		\midrule
-		$\sigma$ & $\infty$ & Fully competitive \\
-		$r$ & $5\%$ & - \\
-		$w$ & $500$ TSEK & - \\
-		$L$ & $250$ (sd = $900$) & \cite{martinsson2024effect}  \\
-		\midrule 
-		\multicolumn{3}{c}{Panel C: Calibrated Value} \\
-		\midrule
-		$\beta_s$ & $0.6$ &  \cite{martinsson2024effect}\\
-		$\alpha_s$ & \input{values/alpha estimate} & {$G/B$}, \cite{wiedemann2023green} \\
-		\bottomrule
-		\end{tabular}}
+	\begin{table}[http]
+		\resizebox{0.3\textwidth}{!}{\input{Tables/Panel A}}
 	\end{table}
 		{
 		\hfill
@@ -410,13 +390,13 @@
 		\begin{equation}
 			\only<2->{\frac{G_{si}}{B_{si}} = \textcolor{blue}{z_{si}^k}} \uncover<3->{=  \left(
 				\frac{\alpha_s}{1-\alpha_s} \frac{(1+\textcolor{red}{\tau_s^B})r_s + \textcolor{red}{\tau_s^E}\tilde{A}}{(1+\textcolor{red}{\tau_s^G})r_s}
-			\right) ^{\frac{1}{\gamma_s}}}
+			\right) ^{{\gamma_s}}}
 		\end{equation}
 	
 		\begin{equation}
 			\only<4->{\frac{L_{si}}{\hat{K}_{si}} = \textcolor{blue}{z_{si}^l}}
 			\uncover<5->{ = \frac{1-\beta}{\beta}\frac{1}{\alpha_s}\left(
-				\alpha_s + (1-\alpha_s) {\textcolor{blue}{z_{si}^k}}^{1-\gamma_s}
+				\alpha_s + (1-\alpha_s) {\textcolor{blue}{z_{si}^k}}^{-\frac{\gamma_s-1}{\gamma_s}}
 			\right)^{\frac{1}{1-\gamma_s}} \frac{(1+\textcolor{red}{\tau_s^G})r_s}{(1+\textcolor{red}{\tau_s^W})w_{si}}}
 		\end{equation}
 		\begin{equation}
