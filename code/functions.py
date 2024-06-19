@@ -96,8 +96,8 @@ def simulate_firms(par):
     # simulate over multiple firms
     r_g = (1-green_premium) * r_b
     np.random.seed(0)
-    A_tilde_vector = (1 + np.random.lognormal(mean=0,sigma=1,size=n)) * A_tilde
-    A_hat_vector = (1 + np.random.lognormal(mean=0,sigma=1,size=n)) * A_hat
+    A_tilde_vector = (1 + np.random.lognormal(mean=0,sigma=.6,size=n)) * A_tilde
+    A_hat_vector = (1 + np.random.lognormal(mean=0,sigma=.6,size=n)) * A_hat
     intensity = []
     production = []
     emissions = []
@@ -105,13 +105,16 @@ def simulate_firms(par):
     G_c = []
     B_c = []
     labor = []
+    income = []
+    cost_share = []
+    price = []
     parameters = par.copy()
     for i in zip(A_tilde_vector,A_hat_vector):
         parameters['A_tilde'] = i[0]
         parameters['A_hat'] = i[1]
         _,_,l,Y,p,g, b = ratios_gen(parameters)
         emission = i[0] * b
-        IN = emission / p / Y
+        IN = emission / p / Y * 1e3
         intensity.append(IN)
         production.append(Y)
         emissions.append(emission)
@@ -119,40 +122,27 @@ def simulate_firms(par):
         G_c.append(g)
         B_c.append(b)
         labor.append(l)
-    return CES_aggregator(emissions,np.inf),CES_aggregator(production,σ),sum(intensity)/n,production,emission_cost,G_c,B_c,labor
+        income.append(p*Y)
+        cost_share.append(τ_E * emission / p/Y)
+        price.append(p)
+    result = (
+        CES_aggregator(emissions,np.inf),
+        CES_aggregator(production,σ),
+        sum(intensity)/n,
+        production,
+        emission_cost,
+        G_c,
+        B_c,
+        labor,
+        income,
+        cost_share,
+        price
+        )
+    return result
+
 def CES_aggregator(array,σ):
     if σ != np.inf:
         return sum([i ** ((σ-1)/σ) for i in array]) ** (σ/(σ-1))
     else:
         return sum(array)
 
-def gen_df(params,τ_E):
-    params_0 = params.copy()
-    params_0['τ_E'] = τ_E 
-    params_1 = params_0.copy()
-    res_1 = ratios_gen(params_1)
-    params_2 = params_0.copy()
-    params_2['A_hat'] = params_2['A_hat'] * 0.8
-    params_2['A_tilde'] = params_2['A_tilde'] * 1.2
-    res_2 = ratios_gen(params_2)
-    # put the results into a dataframe
-    df = pd.DataFrame([res_1,res_2],columns=['z_k','z_l','l','y','p','g','b'])
-    df['income'] = (df.y * df.p).round(2)
-    # df['emission'] = df.emission.round(2)
-    # add sum row
-    df.loc['sum'] = np.nan
-    df.loc['sum','l']= df.l.sum()
-    df.loc['sum','g']= df.g.sum()
-    df.loc['sum','b']= df.b.sum()
-    df.loc['sum','income']= df.income.sum()
-    p_s = 0
-    y_s = 0
-    for i in [res_1,res_2]:
-        p_s += i[4] ** (1-params_0['σ'])
-        y_s += i[3] ** ((params_0['σ']-1)/(params_0['σ']))
-    p_s = p_s ** (1/(1-params_0['σ']))
-    y_s = y_s ** (params_0['σ']/(params_0['σ']-1))
-    df.loc['sum','p'] = p_s
-    # df.p = df.p/p_s
-    df.loc['sum','y'] = y_s
-    return df
