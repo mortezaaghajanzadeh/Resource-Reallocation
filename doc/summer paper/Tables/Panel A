@@ -18,9 +18,13 @@
     \midrule
     $\input{model_elements/z_k_right.tex}$ & $z_k= G/B$ \\\\
     $\input{model_elements/z_l_right.tex}$ & $z_l = L/K$ \\\\
-    $\frac{1}{\gamma} \frac{\tilde{A}}{r^B + \tau_E\tilde{A}} z_k$ & ${\partial z_k/\partial \tau_E }$ \\\\
-    $\frac{\tilde{A}/\gamma}{r^B + \tau_E\tilde{A}}\frac{1}{\frac{\alpha}{1-\alpha}{{z_k}}^{\gamma-1} + 1}{z_l}$ &   $\partial z_l/\partial \tau_E$\\\\
-    - & $\Delta(\frac{E}{PY})/\Delta(\frac{C}{PY}) $ \\
+    ${\gamma} \frac{\tilde{A}}{r^B + \tau_E\tilde{A}} z_k$ & ${\partial z_k/\partial \tau_E }$ \\\\
+    $\frac{1-\alpha}{{\alpha z^k_{si}}^{\frac{\gamma_s-1}{\gamma_s}} + (1-\alpha)}\frac{\tilde{A}}{r^B + \tau_E\tilde{A}}{z_l}$ &   $\partial z_l/\partial \tau_E$\\
+    $\frac{\tilde{A}}{r^B + \tau_E\tilde{A}}\left[
+        -\frac{\gamma\alpha}{\circ} 
+        - (\dfrac{w}{\frac{r}{z_l} + w})\frac{1-\alpha}{\triangle}
+    \right]$ & $\partial \ln \epsilon/\partial \tau_E$\\\\
+    $\dfrac{{\partial \ln \epsilon/\partial \tau_E}}{\dfrac{1}{\tau_E} + {\partial \ln \epsilon/\partial \tau_E}}$ & $\Delta(\frac{E}{PY})/\Delta(\frac{C}{PY}) $ \\
     \midrule
     \multicolumn{2}{c}{Panel C: Calibration} \\
     \midrule

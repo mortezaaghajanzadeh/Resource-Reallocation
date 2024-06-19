@@ -49,7 +49,7 @@ def function_intensity(A_tilde,A_hat,α,γ,z_l,z_k,β):
     return (A_tilde/A_hat) * function_brown_ratio(α,γ,z_k) * (z_l ** (β-1))
 
     
-def optimal_labor(A_tilde,A_hat,α,γ,z_l,z_k,β,w,green_premium,r_b,σ,τ_E,κ=1e3):
+def optimal_labor(A_tilde,A_hat,α,γ,z_l,z_k,β,w,green_premium,r_b,σ,τ_E,κ=0.1):
     p = function_price(A_tilde,A_hat,α,γ,z_l,z_k,β,w,green_premium,r_b,σ,τ_E)
     return κ * z_l ** (β) * (p ** (-σ))/A_hat
 
@@ -92,12 +92,13 @@ def simulate_firms(par):
     A_tilde = par['A_tilde']
     A_hat = par['A_hat']
     n = par['n']
+    sd = par['sd']
 
     # simulate over multiple firms
     r_g = (1-green_premium) * r_b
     np.random.seed(0)
-    A_tilde_vector = (1 + np.random.lognormal(mean=0,sigma=.6,size=n)) * A_tilde
-    A_hat_vector = (1 + np.random.lognormal(mean=0,sigma=.6,size=n)) * A_hat
+    A_tilde_vector = (1 + np.random.lognormal(mean=0,sigma=sd,size=n)) * A_tilde
+    A_hat_vector = (1 + np.random.lognormal(mean=0,sigma=sd,size=n)) * A_hat
     intensity = []
     production = []
     emissions = []

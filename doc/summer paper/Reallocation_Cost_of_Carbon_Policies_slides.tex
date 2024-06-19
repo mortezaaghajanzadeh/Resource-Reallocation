@@ -271,15 +271,45 @@
 \end{frame}
 
 
+\begin{frame}{Estimation }
+	\begin{table}[http]
+		\resizebox{0.3\textwidth}{!}{\input{Tables/Panel A}}
+	\end{table}
+	
+\end{frame}
 
-\begin{frame}{Estimation / Calibration}\label{estimation_result}
+\begin{frame}{Calibration}\label{estimation_result}
 	\begin{itemize}\footnotesize
 		% \item My goal is to estimate the parameters sector by sector for Sweden
 		\item I just reasonably calibrate the model to match the summary statistics of \cite{martinsson2024effect}
 		% \item I will set the $\hat{A} =$  \input{values/A hat estimate} to match the total output in the economy ($\sim 10$ BSEK).
 	\end{itemize}
-	\begin{table}[http]
-		\resizebox{0.3\textwidth}{!}{\input{Tables/Panel A}}
+	% \begin{table}[http]
+	% 	\resizebox{0.3\textwidth}{!}{\input{Tables/Panel A}}
+	% \end{table}
+	\begin{table}[ht]
+		\centering
+		\resizebox*{0.4\textwidth}{!}{\begin{tabular}{@{}ccc@{}}
+		\toprule
+		\textbf{Parameter} & \textbf{Value} & \textbf{Source/Moment}\\
+		\midrule 
+		\multicolumn{3}{c}{Panel A: Estimated Value} \\
+		\midrule
+		$\gamma$ & \input{values/gamma estimate} & $\Delta(\frac{E}{PY})/\Delta(\frac{C}{PY})$ \\
+		$\tilde{A}$ & \input{values/A tilde estimate} & $ E/PY $\\ 
+		\midrule
+		\multicolumn{3}{c}{Panel B: Inputs} \\
+		\midrule
+		$\sigma$ & $5$ & - \\
+		$r$ & $5\%$ & - \\
+		$w$ & $500$ TSEK & - \\
+		\midrule 
+		\multicolumn{3}{c}{Panel C: Calibrated Value} \\
+		\midrule
+		$\beta_s$ & $0.6$ &  \cite{martinsson2024effect}\\
+		$\alpha_s$ & \input{values/alpha estimate} & {$G/B$}, \cite{wiedemann2023green} \\
+		\bottomrule
+		\end{tabular}}
 	\end{table}
 		{
 		\hfill
@@ -303,10 +333,34 @@
 		\only<3>{\includegraphics[width=.6\textwidth]{Figures/emission_production_2_2.pdf}}
 		\only<4>{\includegraphics[width=.6\textwidth]{Figures/emission_production_2_3.pdf}}
 		\only<5>{\includegraphics[width=.6\textwidth]{Figures/emission_production_3.pdf}}
+		\only<6->{\includegraphics[width=.6\textwidth]{Figures/emission_production.pdf}}
 	\end{figure}}
+\end{frame}
 
-	\hfill
-	\hyperlink{results}{\beamerbutton{Carbon Intensity and Tax}}
+
+\begin{frame}{Carbon Intensity and Tax}{{Counterfactual}}{
+	\begin{columns}[t]
+		\column{.7\textwidth}
+		\begin{figure}[t]
+		\centering
+		\includegraphics[width=.85\textwidth]{Figures/intensity_tax_premium.pdf}
+		\end{figure}
+		\column{.35\textwidth}
+		\begin{table}[htbp]
+			\begin{tabular}{ccc}
+				\toprule
+				$ \tau_E$ & $ \tau_G$ & $ \tau_B$ \\
+				\midrule
+					 100 &        9 \% &        2 \% \\
+					 250 &       18 \% &        2 \% \\
+					 500 &       27 \% &        4 \% \\
+					1300 &       42 \% &       12 \% \\
+					3000 &       55 \% &       26 \% \\
+				\bottomrule
+				\end{tabular}
+		\end{table}
+	\end{columns}
+}
 \end{frame}
 
 
