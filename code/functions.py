@@ -80,7 +80,19 @@ def ratios_gen(input_0):
 
 
 
-def simulate_firms(n,A_tilde,A_hat,α,γ,r_b, green_premium,τ_E,β,w,σ):
+def simulate_firms(par):
+    α = par['α']
+    β = par['β']
+    γ = par['γ']
+    σ = par['σ']
+    τ_E = par['τ_E']
+    green_premium = par['green_premium']
+    r_b = par['r_b']
+    w = par['w']
+    A_tilde = par['A_tilde']
+    A_hat = par['A_hat']
+    n = par['n']
+
     # simulate over multiple firms
     r_g = (1-green_premium) * r_b
     np.random.seed(0)
@@ -93,19 +105,19 @@ def simulate_firms(n,A_tilde,A_hat,α,γ,r_b, green_premium,τ_E,β,w,σ):
     G_c = []
     B_c = []
     labor = []
+    parameters = par.copy()
     for i in zip(A_tilde_vector,A_hat_vector):
-        z_k = function_z_k(α,γ,r_b, green_premium,τ_E,i[0])
-        z_l = function_z_l(z_k,β,α,γ,w,green_premium,r_b)
-        p = function_price(i[0],i[1],α,γ,z_l,z_k,β,w,green_premium,r_b,σ,τ_E)
-        l = optimal_labor(i[0],i[1],α,γ,z_l,z_k,β,w,green_premium,r_b,σ,τ_E)
-        IN = function_intensity(i[0],i[1],α,γ,z_l,z_k,β)
-        Y = production_function(i[1],β,z_l,l)
+        parameters['A_tilde'] = i[0]
+        parameters['A_hat'] = i[1]
+        _,_,l,Y,p,g, b = ratios_gen(parameters)
+        emission = i[0] * b
+        IN = emission / p / Y
         intensity.append(IN)
         production.append(Y)
-        emissions.append(IN * Y)
-        emission_cost.append(τ_E/1000 * IN * Y)
-        G_c.append(green_capital(i[1],α,z_k,z_l,γ,β,Y))
-        B_c.append(brown_capital(A_hat,α,z_k,z_l,γ,β,Y))
+        emissions.append(emission)
+        emission_cost.append(τ_E/1000 * emission)
+        G_c.append(g)
+        B_c.append(b)
         labor.append(l)
     return CES_aggregator(emissions,np.inf),CES_aggregator(production,σ),sum(intensity)/n,production,emission_cost,G_c,B_c,labor
 def CES_aggregator(array,σ):
