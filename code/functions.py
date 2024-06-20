@@ -92,8 +92,10 @@ def simulate_firms(par):
     A_tilde = par['A_tilde']
     A_hat = par['A_hat']
     n = par['n']
-    sd = par['sd']
-    cov = par['cov']
+    sd_hat = par['sd_hat']
+    sd_tilde = par['sd_tilde']
+    rho = par['rho']
+    cov = rho * sd_hat * sd_tilde
 
     # simulate over multiple firms
     r_g = (1-green_premium) * r_b
@@ -108,8 +110,8 @@ def simulate_firms(par):
 
     # The desired covariance matrix.
     r = np.array([
-            [sd ** 2, cov],
-            [cov, sd ** 2]
+            [sd_tilde ** 2, cov],
+            [cov, sd_hat ** 2]
         ])
     # np.corrcoef(y[:,0],y[:,1])
     # Generate the random samples.
