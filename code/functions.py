@@ -93,12 +93,31 @@ def simulate_firms(par):
     A_hat = par['A_hat']
     n = par['n']
     sd = par['sd']
+    cov = par['cov']
 
     # simulate over multiple firms
     r_g = (1-green_premium) * r_b
     np.random.seed(0)
-    A_tilde_vector = (1 + np.random.lognormal(mean=0,sigma=sd,size=n)) * A_tilde
-    A_hat_vector = (1 + np.random.lognormal(mean=0,sigma=sd,size=n)) * A_hat
+    # A_tilde_vector = (1 + np.random.lognormal(mean=0,sigma=sd,size=n)) * A_tilde
+    # A_hat_vector = (1 + np.random.lognormal(mean=0,sigma=sd,size=n)) * A_hat
+
+    A_tilde_mu = np.log(A_tilde)
+    A_hat_mu = np.log(A_hat)
+    #build two correlated vectors
+    mu = np.array([A_tilde_mu,A_hat_mu])
+
+    # The desired covariance matrix.
+    r = np.array([
+            [sd ** 2, cov],
+            [cov, sd ** 2]
+        ])
+    # np.corrcoef(y[:,0],y[:,1])
+    # Generate the random samples.
+    rng = np.random.default_rng(seed=0)
+    A_vector = rng.multivariate_normal(mu, r, size=n)
+    A_vector = np.exp(A_vector)
+
+
     intensity = []
     production = []
     emissions = []
@@ -110,12 +129,12 @@ def simulate_firms(par):
     cost_share = []
     price = []
     parameters = par.copy()
-    for i in zip(A_tilde_vector,A_hat_vector):
+    for i in A_vector:
         parameters['A_tilde'] = i[0]
         parameters['A_hat'] = i[1]
         _,_,l,Y,p,g, b = ratios_gen(parameters)
         emission = i[0] * b
-        IN = emission / p / Y * 1e3
+        IN = emission / p / Y
         intensity.append(IN)
         production.append(Y)
         emissions.append(emission)
@@ -126,19 +145,31 @@ def simulate_firms(par):
         income.append(p*Y)
         cost_share.append(τ_E * emission / p/Y)
         price.append(p)
+    # result = (
+    #     CES_aggregator(emissions,np.inf),
+    #     CES_aggregator(production,σ),
+    #     sum(intensity)/n,
+    #     production,
+    #     emission_cost,
+    #     G_c,
+    #     B_c,
+    #     labor,
+    #     income,
+    #     cost_share,
+    #     price
+    #     )
     result = (
-        CES_aggregator(emissions,np.inf),
-        CES_aggregator(production,σ),
-        sum(intensity)/n,
-        production,
-        emission_cost,
-        G_c,
-        B_c,
-        labor,
-        income,
-        cost_share,
-        price
-        )
+        np.array(emissions),
+        np.array(production),
+        np.array(intensity),
+        np.array(emission_cost),
+        np.array(G_c),
+        np.array(B_c),
+        np.array(labor),
+        np.array(income),
+        np.array(cost_share),
+        np.array(price)
+    )
     return result
 
 def CES_aggregator(array,σ):
