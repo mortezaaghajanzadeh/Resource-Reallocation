@@ -21,17 +21,16 @@ parameters = struct(...
 clc
 obj = functionsContainer();
 
-res_table = obj.simulate_firms_table(parameters);
+res_table = simulate_firms_table(obj,parameters);
 res_table("intensity","mean")
 
-x = 1.2
-eqn = function_test(obj,parameters,x);
-S = fsolve(eqn,[0]);
+syms a_tilde
+eq
 
 %%
-function dif = function_test(obj,parameters,gamma_test)
-    parameters.gamma = gamma_test;
-    res_table = obj.simulate_firms_table(parameters);
-    dif = [res_table("z_k","mean") - .05];
+function dif = function_test(parameters,a_tilde)
+    parameters.A_tilde = a_tilde;
+    res_table = simulate_firms_table(obj,parameters);
+    dif = [res_table("intensity","mean") - .0072];
 end
 

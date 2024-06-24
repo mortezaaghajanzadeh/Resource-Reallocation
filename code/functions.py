@@ -14,19 +14,19 @@ import statsmodels.api as sm
 
 def function_z_k(α,γ,r_b, green_premium,τ_E,A_tilde):
     r_g = (1-green_premium) * r_b
-    return (α/(1-α) * (r_b +τ_E/1000*A_tilde )/r_g) ** (γ)
+    return (α/(1-α) * (r_b +τ_E*A_tilde )/r_g) ** (γ)
 
-def function_green_ratio(α,γ,z_k):
+def function_green_ratio(α,γ,z_k): # This is the G/K ratio
     return (α + (1-α)*(z_k** (-(γ-1)/γ)) ) ** (-(γ/(γ-1)))
 
-def function_brown_ratio(α,γ,z_k):
+def function_brown_ratio(α,γ,z_k): # This is the B/K ratio
     return (α * (z_k ** ((γ-1)/γ)) + (1 - α)) ** (-(γ/(γ-1)))
 
 def function_r(α,γ,z_k,green_premium,r_b):
     r_g = (1-green_premium) * r_b
     return function_green_ratio(α,γ,z_k) * r_g + function_brown_ratio(α,γ,z_k) * r_b
 
-def function_z_l(z_k,β,α,γ,w,green_premium,r_b):
+def function_z_l(z_k,β,α,γ,w,green_premium,r_b): # This is the L/K ratio
     r_g = (1-green_premium) * r_b
     return ((1-β)/β/α)* (function_green_ratio(α,γ,z_k)** (1/γ)) * (r_g/w)
 
@@ -35,7 +35,7 @@ def function_price_detail(A_tilde,A_hat,α,γ,z_l,z_k,β,w,green_premium,r_b,σ,
     C_G = r_g * ( function_green_ratio(α,γ,z_k) * (z_l ** (β-1)))
     C_B = r_b * (function_brown_ratio(α,γ,z_k)) * (z_l ** (β-1))
     c_L = w * z_l ** (β)
-    C_E = τ_E/1000 * A_tilde * C_B/r_b
+    C_E = τ_E * A_tilde * C_B/r_b
     return C_G,C_B,c_L,C_E
 
 def function_price(A_tilde,A_hat,α,γ,z_l,z_k,β,w,green_premium,r_b,σ,τ_E,detail=False):
@@ -54,13 +54,15 @@ def optimal_labor(A_tilde,A_hat,α,γ,z_l,z_k,β,w,green_premium,r_b,σ,τ_E,κ=
     return κ * z_l ** (β) * (p ** (-σ))/A_hat
 
 def production_function(A_hat,β,z_l,L):
-    return A_hat * (z_l ** (β)) * L
+    return A_hat * (z_l ** (-β)) * L
 
 def brown_capital(A_hat,α,z_k,z_l,γ,β,Y):
-    return (Y/A_hat) * ((α * (z_k ** ((γ-1)/γ)) + (1 - α)) ** (γ / (1-γ))) * (z_l ** (β-1))
+    # return (Y/A_hat) * ((α * (z_k ** ((γ-1)/γ)) + (1 - α)) ** (γ / (1-γ))) * (z_l ** (β-1))
+    return (Y/A_hat)  * function_brown_ratio(α,γ,z_k) * (z_l ** (β-1))
 
 def green_capital(A_hat,α,z_k,z_l,γ,β,Y):
-    return (Y/A_hat) * ((α + (1-α)*(z_k** (-(γ-1)/γ)) ) ** (γ / (1-γ))) * (z_l ** (β-1))
+    # return (Y/A_hat) * ((α + (1-α)*(z_k** (-(γ-1)/γ)) ) ** (γ / (1-γ))) * (z_l ** (β-1))
+    return (Y/A_hat) * function_green_ratio(α,γ,z_k) * (z_l ** (β-1))
 
 
 def optimal_ratios(input_0,τ_E):
@@ -75,7 +77,7 @@ def ratios_gen(input_0):
     p = function_price(input_0['A_tilde'],input_0['A_hat'],input_0['α'],input_0['γ'],z_l,z_k,input_0['β'],input_0['w'],input_0['green_premium'],input_0['r_b'],input_0['σ'],input_0['τ_E'])
     b = brown_capital(input_0['A_hat'],input_0['α'],z_k,z_l,input_0['γ'],input_0['β'],y)
     g = green_capital(input_0['A_hat'],input_0['α'],z_k,z_l,input_0['γ'],input_0['β'],y)
-    return z_k,z_l,l,y*1e3,p, g, b
+    return z_k,z_l,l,y,p, g, b
 
 
 
@@ -145,7 +147,7 @@ def simulate_firms(par):
         intensity.append(IN)
         production.append(Y)
         emissions.append(emission)
-        emission_cost.append(τ_E/1000 * emission)
+        emission_cost.append(τ_E * emission)
         G_c.append(g)
         B_c.append(b)
         labor.append(l)
