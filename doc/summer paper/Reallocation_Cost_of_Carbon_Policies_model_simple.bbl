@@ -4,13 +4,20 @@
 
 \begin{thebibliography}{xx}
 
-\harvarditem[Blundell \harvardand\ Bond]{Blundell \harvardand\ Bond}{2000}{blundell2000gmm}
-{\bf Blundell, Richard, and Stephen Bond.} 2000. ``GMM estimation with persistent panel data: an application to production functions.'' {\em Econometric reviews}, 19(3):~321--340.
+\harvarditem[Blundell \harvardand\ Bond]{Blundell \harvardand\
+  Bond}{2000}{blundell2000gmm}
+{\bf Blundell, Richard, and Stephen Bond.} 2000. ``GMM estimation with
+  persistent panel data: an application to production functions.'' {\em
+  Econometric reviews}, 19(3):~321--340.
 
-\harvarditem[Davis, Fisher, \harvardand\ Whited]{Davis, Fisher, \harvardand\ Whited}{2014}{davis2014macroeconomic}
-{\bf Davis, Morris~A, Jonas~DM Fisher, and Toni~M Whited.} 2014. ``Macroeconomic implications of agglomeration.'' {\em Econometrica}, 82(2):~731--764.
+\harvarditem[Davis, Fisher, \harvardand\ Whited]{Davis, Fisher, \harvardand\
+  Whited}{2014}{davis2014macroeconomic}
+{\bf Davis, Morris~A, Jonas~DM Fisher, and Toni~M Whited.} 2014.
+  ``Macroeconomic implications of agglomeration.'' {\em Econometrica},
+  82(2):~731--764.
 
 \harvarditem[Kmenta]{Kmenta}{1967}{kmenta1967estimation}
-{\bf Kmenta, Jan.} 1967. ``On estimation of the CES production function.'' {\em International Economic Review}, 8(2):~180--189.
+{\bf Kmenta, Jan.} 1967. ``On estimation of the CES production function.'' {\em
+  International Economic Review}, 8(2):~180--189.
 
 \end{thebibliography}

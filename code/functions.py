@@ -45,7 +45,7 @@ def function_price(A_tilde,A_hat,α,γ,z_l,z_k,β,w,green_premium,r_b,σ,τ_E,de
     else:
         return σ/(σ-1) * (C_G + C_B + c_L + C_E) / A_hat
 
-def function_intensity(A_tilde,A_hat,α,γ,z_l,z_k,β):
+def function_intensity(A_tilde,A_hat,α,γ,z_l,z_k,β): # This the E/Y and different from E/PY
     return (A_tilde/A_hat) * function_brown_ratio(α,γ,z_k) * (z_l ** (β-1))
 
     
@@ -130,11 +130,16 @@ def simulate_firms(par):
     income = []
     cost_share = []
     price = []
+    z_l = []
+    z_k = []
+    K = []
     parameters = par.copy()
     for i in A_vector:
         parameters['A_tilde'] = i[0]
         parameters['A_hat'] = i[1]
-        _,_,l,Y,p,g, b = ratios_gen(parameters)
+        k,l_ratio,l,Y,p,g, b = ratios_gen(parameters)
+        z_l.append(l_ratio)
+        z_k.append(k)
         emission = i[0] * b
         IN = emission / p / Y
         intensity.append(IN)
@@ -147,6 +152,7 @@ def simulate_firms(par):
         income.append(p*Y)
         cost_share.append(τ_E * emission / p/Y)
         price.append(p)
+        K.append(l/l_ratio)
     # result = (
     #     CES_aggregator(emissions,np.inf),
     #     CES_aggregator(production,σ),
@@ -170,7 +176,10 @@ def simulate_firms(par):
         np.array(labor),
         np.array(income),
         np.array(cost_share),
-        np.array(price)
+        np.array(price),
+        np.array(z_k),
+        np.array(z_l),
+        np.array(K)
     )
     return result
 
