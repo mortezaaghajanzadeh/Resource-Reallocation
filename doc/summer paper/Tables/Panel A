@@ -1,35 +1,42 @@
 \begin{tabular}{@{}cc@{}}
     \toprule
-    \textbf{Parameter}  & \textbf{Source/Moment}\\
+    \textbf{Source/Moment} & \textbf{Helps to identify}  \\
     \midrule 
-    \multicolumn{2}{c}{Panel A: Estimation} \\
-    \midrule
-    $\alpha_s$ & ${\beta_G}/{\beta_B}$ \\
-    $\beta_s$ & ${\beta_G}/{\beta_L}$\\ 
-    $\sigma_s$ & $WL/PY$\\
-    $\gamma_s$ & ${\beta_{GB}}/{\beta_B\beta_G}$\\
-    $Mean(\log(\hat{A}_{si})) $ & $Mean({L}_{si})$\\
-    $Sd(\log({\hat{A}}))$ & $Sd({L}_{si})$\\
-    $Mean(\log(\tilde{A}_{si})) $ & $Mean({E/PY})$\\
-    $Sd({\log(\tilde{A})})$ & $Sd({E/PY})$\\
-    $Corr(\log(\hat{A}),\log(\tilde{A}))$ & $Corr(PY,E/PY)$\\
-    \midrule
-    \multicolumn{2}{c}{Panel B: Additional Moments} \\
-    \midrule
-    $\input{model_elements/z_k_right.tex}$ & $z_k= G/B$ \\\\
-    $\input{model_elements/z_l_right.tex}$ & $z_l = L/K$ \\\\
-    ${\gamma} \frac{\tilde{A}}{r^B + \tau_E\tilde{A}} z_k$ & ${\partial z_k/\partial \tau_E }$ \\\\
-    $\frac{1-\alpha}{{\alpha z^k_{si}}^{\frac{\gamma_s-1}{\gamma_s}} + (1-\alpha)}\frac{\tilde{A}}{r^B + \tau_E\tilde{A}}{z_l}$ &   $\partial z_l/\partial \tau_E$\\
-    $\frac{\tilde{A}}{r^B + \tau_E\tilde{A}}\left[
-        -\frac{\gamma\alpha}{\circ} 
-        - (\dfrac{w}{\frac{r}{z_l} + w})\frac{1-\alpha}{\triangle}
-    \right]$ & $\partial \ln \epsilon/\partial \tau_E$\\\\
-    $\dfrac{{\partial \ln \epsilon/\partial \tau_E}}{\dfrac{1}{\tau_E} + {\partial \ln \epsilon/\partial \tau_E}}$ & $\Delta(\frac{E}{PY})/\Delta(\frac{C}{PY}) $ \\
-    \midrule
-    \multicolumn{2}{c}{Panel C: Calibration} \\
-    \midrule
-    $r$ & $5\%$  \\
-    $w$ & $500$ TSEK  \\
+    % \multicolumn{2}{c}{Panel A: Estimation} \\
+    % \midrule
+    $z_k= G/B$ & $\alpha_s$ \\
+    $WL/rK$ & $\beta_s$ \\
+    $WL/PY$ & $\sigma_s$ \\
+    $\Delta(\frac{E}{PY})/\Delta(\frac{C}{PY}) $ & $\gamma_s$\\
+    $Mean({L}_{si})$ &$Mean(\log(\hat{A}_{si})) $ \\
+    $Sd({L}_{si})$ & $Sd(\log({\hat{A}}))$ \\
+    $Mean({E/PY})$ & $Mean(\log(\tilde{A}_{si}))$ \\
+    $Sd({E/PY})$ & $Sd({\log(\tilde{A})})$ \\
+    $Corr(PY,E/PY)$ &$Corr(\log(\hat{A}),\log(\tilde{A}))$ \\
+    % \\
+    % \midrule 
+    % \multicolumn{2}{c}{Panel A: Estimation} \\
+    % \midrule
+    % $\alpha_s$ & ${\beta_G}/{\beta_B}$ \\
+    % $\beta_s$ & ${\beta_G}/{\beta_L}$\\ 
+    % $\sigma_s$ & $WL/PY$\\
+    % \midrule
+    % \multicolumn{2}{c}{Panel B: Additional Moments} \\
+    % \midrule
+    % $\input{model_elements/z_k_right.tex}$ & $z_k= G/B$ \\\\
+    % $\input{model_elements/z_l_right.tex}$ & $z_l = L/K$ \\\\
+    % ${\gamma} \frac{\tilde{A}}{r^B + \tau_E\tilde{A}} z_k$ & ${\partial z_k/\partial \tau_E }$ \\\\
+    % $\frac{1-\alpha}{{\alpha z^k_{si}}^{\frac{\gamma_s-1}{\gamma_s}} + (1-\alpha)}\frac{\tilde{A}}{r^B + \tau_E\tilde{A}}{z_l}$ &   $\partial z_l/\partial \tau_E$\\
+    % $\frac{\tilde{A}}{r^B + \tau_E\tilde{A}}\left[
+    %     -\frac{\gamma\alpha}{\circ} 
+    %     - (\dfrac{w}{\frac{r}{z_l} + w})\frac{1-\alpha}{\triangle}
+    % \right]$ & $\partial \ln \epsilon/\partial \tau_E$\\\\
+    % $\dfrac{{\partial \ln \epsilon/\partial \tau_E}}{\dfrac{1}{\tau_E} + {\partial \ln \epsilon/\partial \tau_E}}$ & $\Delta(\frac{E}{PY})/\Delta(\frac{C}{PY}) $ \\
+    % \midrule
+    % \multicolumn{2}{c}{Panel C: Calibration} \\
+    % \midrule
+    % $r$ & $5\%$  \\
+    % $w$ & $500$ TSEK  \\
     
     \bottomrule
 \end{tabular}

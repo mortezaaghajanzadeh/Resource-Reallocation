@@ -1,10 +1,10 @@
 clear
 parameters = struct(...
     'beta', 0.6, ...
-    'gamma', 2.58, ...
+    'gamma', 2.7268, ...
     'alpha', 0.25, ...
-    'A_hat', 2, ...
-    'A_tilde', .2, ...
+    'A_hat', 2.108, ...
+    'A_tilde', .0002, ...
     'mu', 0, ...
     'theta', 1, ...
     'eta', inf, ...
@@ -24,20 +24,23 @@ obj = functionsContainer();
 res_table = obj.simulate_firms_table(parameters);
 res_table("intensity","mean")
 
-x0 = [1.2,0.01];
-r = @(b) function_test(obj,parameters,b(1),b(2));
+x0 = [1.2,0.0001,1];
+r = @(b) function_test(obj,parameters,b(1),b(2),b(3));
 S = fsolve(r,x0)
+%%
+res = obj.simulate_firms(parameters);
+obj.function_coef(parameters,10)
 
 
 %%
-function dif = function_test(obj,parameters,gamma_test,A_tilde_test,A)
-    parameters.gamma = gamma_test;
-%     parameters.A_hat = A_hat;
-    parameters.A_tilde = A_tilde_test;
+function dif = function_test(obj,parameters,gamma,A_tilde,A_hat)
+    parameters.gamma = gamma;
+    parameters.A_hat = A_hat;
+    parameters.A_tilde = A_tilde;
     res_table = obj.simulate_firms_table(parameters);
     dif = [
         table2array(res_table("z_k","mean")) - .05;
-        table2array(res_table("intensity","mean")) - .002;
+        table2array(res_table("intensity","mean")) - .02;
         table2array(res_table("l","mean")) - 250;
         ];
 end
