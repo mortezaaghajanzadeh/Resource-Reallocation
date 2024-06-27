@@ -213,14 +213,15 @@ classdef functionsContainer
             r_b = parameters.r_b;
             w = parameters.w;
             beta = parameters.beta;
+            r = function_r(obj,alpha, gamma, z_k, green_premium, r_b);
 
             if tau_E == 0
                 coef = 0;
             else
                 epsilon_change = A_tilde / (r_b + tau_E / 1000 * A_tilde) * (...
                     -gamma * alpha / (function_green_ratio(obj,alpha, gamma, z_k) ^ (-((gamma - 1) / gamma))) ...
-                    - (1 - alpha) / (function_green_ratio(obj,alpha, gamma, z_k) ^ (-((gamma - 1) / gamma))) / ...
-                    (function_r(obj,alpha, gamma, z_k, green_premium, r_b) / w / z_l));
+                    - (1 - alpha) / (function_green_ratio(obj,alpha, gamma, z_k) ^ (-((gamma - 1) / gamma))) * ...
+                    ( 2 * beta - (1 +  r/z_l/(w + r/z_l))));
                 c_change = 1 / (tau_E / 1000) + epsilon_change;
                 coef = epsilon_change / c_change;
             end
@@ -246,17 +247,18 @@ classdef functionsContainer
             z_k_ratios = res.z_k;
             z_l_ratios = res.z_l;
             K = res.K;
+            wage_share = (res.labor * parameters.w) ./ res.income;
 
             % Aggregating with CES_aggregator function
             Y = obj.CES_aggregator(production, parameters.sigma);
             e = sum(emissions);
 
             % Generating statistics and storing them in a MATLAB table
-            res_table = table('Size', [13, 4], ...
+            res_table = table('Size', [14, 4], ...
                             'VariableTypes', repmat({'double'}, 1, 4), ...
                             'VariableNames', {'mean', 'median', 'std', 'sum'}, ...
-                            'RowNames', {'emissions', 'production', 'intensity', 'emission_cost', 'G_c', 'B_c', 'K', 'l', 'income', 'cost_share', 'price', 'z_k', 'z_l'});
-            data_variables = {emissions, production, intensity, emission_cost, G_c, B_c, K, l, income, cost_share, price, z_k_ratios, z_l_ratios};
+                            'RowNames', {'emissions', 'production', 'intensity', 'emission_cost', 'G_c', 'B_c', 'K', 'l', 'income', 'cost_share', 'wage_share', 'price', 'z_k', 'z_l'});
+            data_variables = {emissions, production, intensity, emission_cost, G_c, B_c, K, l, income, cost_share, wage_share, price, z_k_ratios, z_l_ratios};
             stat_functions = {@mean, @median, @std, @sum};
             stat_names = {'mean', 'median', 'std', 'sum'};
 

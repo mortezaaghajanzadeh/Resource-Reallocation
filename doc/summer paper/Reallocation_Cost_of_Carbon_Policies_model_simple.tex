@@ -210,33 +210,34 @@ We need to find an expression for the technologies ($\hat{A}_{si}$ and $\tilde{A
 
     \begin{align*}
         & \frac{E}{\nu_{s}(PY)^{\frac{\sigma_s}{\sigma_s - 1}}}  = \frac{\tilde{A}}{\hat{A}}(\frac{B}{K}) {{z_l}}^{\beta-1} , \quad \epsilon \equiv  \frac{E}{PY}, \quad c \equiv \frac{\tau_E E}{PY}\\
-        \Rightarrow & \ln \epsilon =  \ln \frac{\tilde{A}}{\hat{A}} + \ln(\frac{B}{K}) + (\beta-1) \ln {{z_l}} + \frac{1}{\sigma -1} \ln PY + \ln \nu_{s} \\
-        \Rightarrow & \ln c = \ln \tau_E + \ln \frac{\tilde{A}}{\hat{A}} + \ln(\frac{B}{K}) + (\beta-1) \ln {{z_l}} + \frac{1}{\sigma -1} \ln PY + \ln \nu_{s}
+        \Rightarrow& \epsilon = \frac{\tilde{A}}{\hat{A}}(\frac{B}{K}) {{z_l}}^{\beta-1} ({PY})^{\frac{-1}{\sigma-1}}  \\
+        \Rightarrow & \ln \epsilon =  \ln \frac{\tilde{A}}{\hat{A}} + \ln(\frac{B}{K}) + (\beta-1) \ln {{z_l}} - \frac{1}{\sigma -1} \ln PY + \ln \nu_{s} \\
+        \Rightarrow & \ln c = \ln \tau_E + \ln \frac{\tilde{A}}{\hat{A}} + \ln(\frac{B}{K}) + (\beta-1) \ln {{z_l}} - \frac{1}{\sigma -1} \ln PY + \ln \nu_{s}
         \\
         \Rightarrow & \frac{\partial \ln \epsilon}{\partial \tau_E} =   \frac{\partial \ln \frac{B}{K} }{\partial \tau_E} 
-        + (\beta - 1) \frac{\partial \ln z_l }{\partial \tau_E} + \frac{1}{\sigma -1} \frac{\partial\ln PY }{\partial \tau_E}\\
+        + (\beta - 1) \frac{\partial \ln z_l }{\partial \tau_E} - \frac{1}{\sigma -1} \frac{\partial\ln PY }{\partial \tau_E}\\
         \Rightarrow & \frac{\partial \ln \epsilon}{\partial \tau_E} =   \frac{\partial \ln \frac{B}{K} }{\partial \tau_E}
-        + (\beta - 1) \frac{\partial \ln z_l }{\partial \tau_E}  - \frac{\sigma}{\sigma -1}\frac{z_L^{\beta}}{\hat{A}_{si}p_i} \dfrac{\tilde{A}}{r^\beta+\tau_E \tilde{A}}
+        + (\beta - 1) \frac{\partial \ln z_l }{\partial \tau_E}  + \frac{\sigma}{\sigma -1}\frac{z_L^{\beta}}{\hat{A}_{si}p_i} \dfrac{\tilde{A}}{r^\beta+\tau_E \tilde{A}}
         ((\frac{r}{z_l} + w)\beta-\frac{r}{z_l} )\frac{1-\alpha}{\triangle}
     \end{align*}
     \begin{align*}
         \frac{\partial \ln \epsilon}{\partial \tau_E}  &=   - \frac{\gamma\alpha}{\circ} \cdot \frac{\tilde{A}}{r^\beta+\tau_E \tilde{A}}	
         + (\beta-1) \frac{1-\alpha}{\triangle}\frac{\tilde{A}}{r^B + \tau_E\tilde{A}}
-        - \frac{\sigma}{\sigma -1}\frac{z_L^{\beta}}{\hat{A}_{si}p_i} \dfrac{\tilde{A}}{r^\beta+\tau_E \tilde{A}}
+        + \frac{\sigma}{\sigma -1}\frac{z_L^{\beta}}{\hat{A}_{si}p_i} \dfrac{\tilde{A}}{r^\beta+\tau_E \tilde{A}}
         ((\frac{r}{z_l} + w)\beta-\frac{r}{z_l} )\frac{1-\alpha}{\triangle}\\
         &= \frac{\tilde{A}}{r^B + \tau_E\tilde{A}}\left[
             -\frac{\gamma\alpha}{\circ} 
             + (\beta-1) \frac{1-\alpha}{\triangle} 
-            - \frac{\sigma}{\sigma -1}\frac{z_L^{\beta}}{{\hat{A}_{si}}p_i} {((\frac{r}{z_l} + w)\beta-\frac{r}{z_l} )}\frac{1-\alpha}{\triangle}
+            + \frac{\sigma}{\sigma -1}\frac{z_L^{\beta}}{{\hat{A}_{si}}p_i} {((\frac{r}{z_l} + w)\beta-\frac{r}{z_l} )}\frac{1-\alpha}{\triangle}
         \right]\\
         &= \frac{\tilde{A}}{r^B + \tau_E\tilde{A}}\left[
             -\frac{\gamma\alpha}{\circ} 
             + (\beta-1) \frac{1-\alpha}{\triangle} 
-            - \dfrac{1}{\frac{r}{z_l} + w} {((\frac{r}{z_l} + w)\beta-\frac{r}{z_l} )}\frac{1-\alpha}{\triangle}
+            + \dfrac{1}{\frac{r}{z_l} + w} {((\frac{r}{z_l} + w)\beta-\frac{r}{z_l} )}\frac{1-\alpha}{\triangle}
         \right]\\
         & = \frac{\tilde{A}}{r^B + \tau_E\tilde{A}}\left[
             -\frac{\gamma\alpha}{\circ} 
-            - (\dfrac{w}{\frac{r}{z_l} + w})\frac{1-\alpha}{\triangle}
+            + (2\beta - (1 + \dfrac{\frac{r}{z_l}}{\frac{r}{z_l} + w}))\frac{1-\alpha}{\triangle}
         \right]\left.\Bigg|_{\partial  \ln(\hat{A}/\tilde{A}) / \partial \tau_E = 0}\right.
     \end{align*}
 
