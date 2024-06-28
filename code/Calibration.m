@@ -24,15 +24,15 @@ obj = functionsContainer();
 res_table = obj.simulate_firms_table(parameters);
 res_table("intensity","mean")
 
-x0 = [1.2,0.0001,1];
+x0 = [2,0.0001,1];
 r = @(b) function_test(obj,parameters,b(1),b(2),b(3));
 S = fsolve(r,x0)
-%%
-res = obj.simulate_firms(parameters);
-obj.function_coef(parameters,100)*100
 
 
-%%
+
+
+
+
 function dif = function_test(obj,parameters,gamma,A_tilde,A_hat)
     parameters.gamma = gamma;
     parameters.A_hat = A_hat;
