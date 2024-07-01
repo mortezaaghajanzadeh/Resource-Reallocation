@@ -10,7 +10,7 @@ variables = struct( ...
     'green_premium', 0, ...
     'w', 0.500, ... % MSEK
     'tau_E', 0, ... % per ton
-    'n', 1000 ...
+    'n', 25 ...
 );
 
 parameters = struct(...
@@ -29,11 +29,11 @@ tax_profile = [0,100,200,500];
 obj = functionsContainer();
 parameters = obj.generate_parameters(variables,parameters);
 
-target_moments = [0.25; 0.6;0.4;2;250;908;0.0072;0.0184;0.5];
+target_moments = [0.5; 0.6;0.4;2;250;908;0.0072;0.0184;0.5];
 x0 = [0.25,0.6,5,2.7268,2,0.45,0.0002,2,0.5];
 r = @(b) funciton_test(obj,variables,tax_profile,b(1),b(2),b(3),b(4),b(5),b(6),b(7),b(8),b(9),target_moments);
-options = optimoptions('fsolve','Display','iter','MaxFunctionEvaluations',10000,'MaxIterations',1000);
-S = fsolve(r,x0,options);
+options = optimoptions('fsolve','MaxFunctionEvaluations',90000,'MaxIterations',10000);
+S = fsolve(r,x0,options)
 
 %%
 [emissions, production, intensity, G_c, B_c, labor, income, cost_share, price, z_k, z_l, K,R] = simulate_dynamic_firms(obj,variables,parameters_funciton(S),tax_profile);
@@ -72,6 +72,7 @@ function H = funciton_test(obj,variables,tax_profile,b1,b2,b3,b4,b5,b6,b7,b8,b9,
 
     H = moments ./ target_moments - 1;
 end
+
 function parameters = parameters_funciton(b)
     parameters = struct(...
         'alpha', b(1), ...

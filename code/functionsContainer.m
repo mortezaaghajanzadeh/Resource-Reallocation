@@ -133,7 +133,8 @@ classdef functionsContainer
             z_l = zeros(nRows, numTaxes);
             K = zeros(nRows, numTaxes);
             R = zeros(nRows, numTaxes);
-            parfor idx = 1:numTaxes
+            % parfor idx = 1:numTaxes
+            for idx = 1:numTaxes
                 tax = tax_profile(idx);
                 % Run the simulation
                 [emissions(:, idx), production(:, idx), intensity(:, idx), G_c(:, idx), B_c(:, idx), labor(:, idx), income(:, idx), cost_share(:, idx), price(:, idx), z_k(:, idx), z_l(:, idx), K(:, idx), R(:, idx)] = obj.simulate_firms(par, A_vector(:,:,idx), tax);
